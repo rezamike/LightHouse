@@ -59,10 +59,24 @@ $(document).ready(function () {
         function initMap(location) {
 
             // Display map and center on the neighborhood
-            var geocoder = new google.maps.Geocoder();
             var mapDiv = document.getElementById('map');
+            // var midLat = 0;
+            // var midLng = 0;
+            // for (let i = 0; i < location.length; i++) {
+            //     midLat += location[i][1];
+            //     midLat = midLat / (location.length - 1);
+            //     console.log(midLat);
+            // }
+            // for (let i = 0; i < location.length; i++) {
+            //     midLng += location[i][0];
+            //     midLng = midLng / (location.length - 1);
+            //     console.log(midLng);
+            // }
+            // var center = {lat: midLat, lng: midLng};
+
+            var center = {lat: 34.0522, lng: -118.2437};
             var mapOptions = {
-                center: {lat: 0, lng: 0},
+                center: center,
                 zoom: 12
             };
             var map = new google.maps.Map(mapDiv, mapOptions);
