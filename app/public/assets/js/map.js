@@ -58,20 +58,15 @@ $(document).ready(function () {
         // Initialize Map
         function initMap(location) {
 
-            // Need to calculate center within neighborhood!!!
-
             // Display map and center on the neighborhood
+            var geocoder = new google.maps.Geocoder();
             var mapDiv = document.getElementById('map');
-            var center;
             var mapOptions = {
-                center: {lat: 34.0522, lng: -118.2437},
-                zoom: 13
+                center: {lat: 0, lng: 0},
+                zoom: 12
             };
             var map = new google.maps.Map(mapDiv, mapOptions);
-
-            // Later: set markers for certain data points from other API's
-            var marker = new google.maps.Marker({ position: { lat: 34.0522, lng: -118.2437 }, map: map });
-            // var marker2 = new google.maps.Marker({ position: location2, map: map });
+            var marker = new google.maps.Marker({ position: center, map: map });
 
             // Display neighborhood boundary on the map 
             var boundary = [];
