@@ -2,3 +2,23 @@
     height: 700px;
     width: 700px;
 }
+
+/* body {
+
+    background-size: cover;
+    text-align: left;
+    color: #ffffff;
+  } */
+
+  #options {
+      color: black;
+  }
+
+  .nav-bar {
+      color: black;
+      background-color: red; 
+  }
+
+  #location-input {
+      color: pink; 
+  }
