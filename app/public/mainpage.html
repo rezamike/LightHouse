@@ -37,12 +37,11 @@
 
 <body>
 
-    <div class="container is-fluid">
         <nav class="navbar" role="navigation" aria-label="dropdown navigation">
 
-            <section class="hero is-primary">
+            <section class="hero">
                 <div class="hero-body">
-                    <div class="container is-expanded">
+                    <div class="container is-primary">
                         <h1 class="title">
                             ARC
                         </h1>
@@ -54,7 +53,7 @@
                 <a class="navbar-link">
                     About
                 </a>
-                <div class="navbar-dropdown">
+                <div class="navbar-dropdown is-primary">
                     <a class="navbar-item">
                         About
                     </a>
@@ -68,29 +67,41 @@
             </div>
         </nav>
 
-        <div class="row" id="card-row1">
+        <div class="card">
+                <div class="card-content">
+                        <div class="field is-grouped">
+                        <i class="map">
+                        <select id='options'>
+                                <option id="option-value"></option>
+                            </select>
+                            <label>Choose a neighborhood</label>
+                            <input type="submit" value="Submit">
+                        </div>
+                </div>
+        </div>
+
+          
+
+        <!-- <div class="row" id="card-row1">
 
                 <div class="columns">
                     <div class="column">
+                            <select id='options'>
+                                    <option id="option-value"></option>
+                                </select>
+                                <label>Choose a neighborhood</label>
+                                <input type="submit" value="Submit">
+
                         <div id="map"></div>
-                        <select id='options'>
-                            <option id="option-value"></option>
-                        </select>
-                        <label>Choose a neighborhood</label>
-                        <input type="submit" value="Submit">
     
-    
-    
-                    </div>
-    
+                    </div> -->
+<!--     
                     <div class="column">
                         Second column
-                    </div>
+                    </div> -->
 
 
-         </div>
-        </div>
-</div>
+
 </body>
 
 </html>
