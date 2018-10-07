@@ -1,12 +1,15 @@
 $(document).ready(function () {
 
+
     var neighborhoodLinks = [];
     var neighborhoods = [];
+
 
     $.ajax({
         url: "https://cors-anywhere.herokuapp.com/http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive/1.0/boundary-set/la-county-neighborhoods-v6.json",
         method: "GET"
     }).then(function (res) {
+
 
         var paths = res.boundaries;
 
@@ -31,7 +34,7 @@ $(document).ready(function () {
         for (let i = 0; i < neighborhoods.length; i++) {
             var option = $("<option>");
             option.text(neighborhoods[i]).val(neighborhoods[i]);
-            $("#options").append(option);
+            $("select").append(option);
         }
     });
 
@@ -100,4 +103,5 @@ $(document).ready(function () {
             polyline.setMap(map);
         };
     });
+    // $('select').formSelect();
 });
