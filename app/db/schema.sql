@@ -1,1 +1,3 @@
 USE projectTwo;
+
+DESCRIBE Crimes;
