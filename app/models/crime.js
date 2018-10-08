@@ -1,27 +1,39 @@
 module.exports = function (sequelize, DataTypes) {
     var Crime = sequelize.define("Crime", {
-        Date_Occurred: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        Area_Name: {
+        neighborhood: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Crime_Code: {
+        totalCrimes: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        Crime_Code_Description: {
+        kidnap: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        violent: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        property: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        trespass: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        lighting: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Address: {
+        clean: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Location: {
-            type: DataTypes.STRING,
+        population: {
+            type: DataTypes.INTEGER,
             allowNull: false
         }
     }, {timestamps: false});
