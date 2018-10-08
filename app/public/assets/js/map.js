@@ -57,6 +57,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (res) {
             var location = res.simple_shape.coordinates[0][0];
+            console.log(location)
             initMap(location);
         });
     });
@@ -81,17 +82,16 @@ $(document).ready(function () {
             console.log(places);
             console.log(res);
 
-            test()
+            test();
         });
     });
 
     function test () {
         console.log(neighborhoodInput + locationInput);
-    }
+    };
 
     // Initialize Map
     function initMap(location) {
-
         // Find neighborhood max, min, and center points
         var xArray = [];
         var yArray = [];
@@ -134,12 +134,13 @@ $(document).ready(function () {
         var polyline = new google.maps.Polyline(polylineOptions);
         polyline.setMap(map);
 
-        // Fit map to bounds
-        var bounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < location.length; i++) {
-            bounds.extend(location[i].getPosition());
-        }
-        map.fitBounds(bounds);
+        console.log("end")
+        // // Fit map to bounds
+        // var bounds = new google.maps.LatLngBounds();
+        // for (var i = 0; i < location.length; i++) {
+        //     bounds.extend(location[i].getPosition());
+        // }
+        // map.fitBounds(bounds);
     };
 
     // Places result constructor function
@@ -151,5 +152,3 @@ $(document).ready(function () {
     // };
     // $('select').formSelect();
 });
-
-module.exports = "./map.js";
