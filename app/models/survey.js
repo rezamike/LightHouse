@@ -1,5 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
     var Survey = sequelize.define("Survey", {
+        businessName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         uniqueID: {
             type: DataTypes.STRING,
             allowNull: true
