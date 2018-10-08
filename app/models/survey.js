@@ -1,5 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
     var Survey = sequelize.define("Survey", {
+        businessName: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         uniqueID: {
             type: DataTypes.STRING,
             allowNull: true
@@ -43,7 +47,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false
         }, 
-        a6: {
+        security: {
             type: DataTypes.BOOLEAN,
             allowNull: false
         },
