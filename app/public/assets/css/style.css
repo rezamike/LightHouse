@@ -6,12 +6,20 @@
     /* display: inline- block; */
 }
 
-/* body {
+.hero-body {
+    background: url("../images/lighthouse2.png");
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+}
 
-    background-size: cover;
-    text-align: left;
-    color: #ffffff;
-  } */
+/* 
+    display: block;
+    max-width: 100%;
+    height: auto; 
+
+}  */
 
   #options {
       color: black;
