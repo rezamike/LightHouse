@@ -1,6 +1,8 @@
 #map {
     height: 700px;
     width: 500px;
+    
+    
     /* display: inline- block; */
 }
 
@@ -27,4 +29,9 @@
 #drop-down {
     color: purple; 
 }
-
+#theRight {
+    margin-left: 25px;
+}
+#theLeft {
+   
+}

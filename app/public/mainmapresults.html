@@ -100,7 +100,8 @@
     <div class="container">
   
   <!-------------- LEFT COLUMN WITH SEARCH BAR & reSULT MAP ------ -->
-      <div class="columns is-6">
+  <div class="columns">    
+  <div class="column is-half" id="theLeft">
 
           <form>
               <select id='options'>
@@ -116,11 +117,29 @@
 
 <!------------------ RIGHT COLUMN ------------------------------ -->
 
-        <div class="column is-6">
-
-
-
+        <div class="column is-half" id="theRight">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                Crime
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                Select a neighborhood, and then select what type of crime to display here.
+                
+                <br>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Violent</a>
+              <a href="#" class="card-footer-item">Kidnapping</a>
+              <a href="#" class="card-footer-item">Property</a>
+              <a href="#" class="card-footer-item">Trespassing</a>
+            </footer>
+          </div>
         </div>
+      </div>
 
 
 <!-------------APP CONTENT END -------------------- -->
