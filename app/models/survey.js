@@ -47,7 +47,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false
         }, 
-        a6: {
+        security: {
             type: DataTypes.BOOLEAN,
             allowNull: false
         },
