@@ -7,6 +7,7 @@ $(document).ready(function () {
     var west;
     var east;
     var north;
+    var neighborhoodInput;
 
     // Receive neighborhood names from LA Times API
     $.ajax({
@@ -15,7 +16,7 @@ $(document).ready(function () {
     }).then(function (res) {
 
         var paths = res.boundaries;
-
+        console.log(paths);
         // Populate array of API links
         for (let i = 0; i < paths.length; i++) {
             var path = paths[i];
@@ -56,7 +57,11 @@ $(document).ready(function () {
         }).then(function (res) {
             var location = res.simple_shape.coordinates[0][0];
             initMap(location);
-        });
+        }).then((res) => {
+            $.post(`/neighborhoods/${neighborhoodInput}`, (response) => {
+                console.log(response);
+            })
+        })
     });
 
     $("#chooseLocation").on("submit", function (event) {
@@ -78,7 +83,11 @@ $(document).ready(function () {
             }
             console.log(places);
             console.log(res);
-        });
+        }).then((res) => {
+            $.post(`/neighborhoods/${input}`, (response) => {
+                console.log(response);
+            })
+        })
     });
 
     // Initialize Map

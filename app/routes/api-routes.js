@@ -3,10 +3,19 @@
 
 // Requiring our Todo model
 var db = require("../models");
-
 // Routes
 // =============================================================
+
 module.exports = function (app) {
+
+
+    app.post('/neighborhood/:value', (req, res) => {
+        console.log(req.params.value);
+    });
+
+    app.post('/businesses/:value', (req, res) => {
+        console.log(req.params.value);
+    });
 
     // GET route for getting all of the survey information and mesh into a formula to calculate average score
       app.get("/api/surveys/", function(req, res) {
@@ -69,30 +78,4 @@ module.exports = function (app) {
     //       });
     //   });
 
-    // db.Survey.create({
-    //     a1: 1,
-    //     a2: 1,
-    //     a3: 1,
-    //     a4: 1,
-    //     a5: 1,
-    //     a6: false
-    // });
-    // db.Survey.create({
-    //     a1: 5,
-    //     a2: 5,
-    //     a3: 5,
-    //     a4: 5,
-    //     a5: 5,
-    //     a6: false
-    // });
-    // db.Survey.create({
-    //     a1: 10,
-    //     a2: 10,
-    //     a3: 10,
-    //     a4: 10,
-    //     a5: 10,
-    //     a6: true
-    // });
 };
-
-
