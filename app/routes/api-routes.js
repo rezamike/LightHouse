@@ -8,50 +8,41 @@ var db = require("../models");
 // =============================================================
 module.exports = function (app) {
 
-    // GET route for getting all of the posts
-    //   app.get("/api/posts/", function(req, res) {
-    //     db.Post.findAll({})
-    //       .then(function(dbPost) {
-    //         res.json(dbPost);
-    //       });
-    //   });
+    // GET route for getting all of the survey information and mesh into a formula to calculate average score
+      app.get("/api/surveys/", function(req, res) {
+        db.Survey.findAll({})
+          .then(function(dbSurvey) {
 
-    //   // Get route for returning posts of a specific category
-    //   app.get("/api/posts/category/:category", function(req, res) {
-    //     db.Post.findAll({
-    //       where: {
-    //         category: req.params.category
-    //       }
-    //     })
-    //       .then(function(dbPost) {
-    //         res.json(dbPost);
-    //       });
-    //   });
+            //?
+          });
+      });
 
-    //   // Get route for retrieving a single post
-    //   app.get("/api/posts/:id", function(req, res) {
-    //     db.Post.findOne({
-    //       where: {
-    //         id: req.params.id
-    //       }
-    //     })
-    //       .then(function(dbPost) {
-    //         res.json(dbPost);
-    //       });
-    //   });
+    //   // Get route for returning specific neighborhood information
+      app.get("/api/crimes/neighborhoods/:neighborhood", function(req, res) {
+        db.Crime.findAll({
+          where: {
+            neighborhood: req.params.neighborhood
+          }
+        })
+          .then(function(dbCrime) {
 
-    //   // POST route for saving a new post
-    //   app.post("/api/posts", function(req, res) {
-    //     console.log(req.body);
-    //     db.Post.create({
-    //       title: req.body.title,
-    //       body: req.body.body,
-    //       category: req.body.category
-    //     })
-    //       .then(function(dbPost) {
-    //         res.json(dbPost);
-    //       });
-    //   });
+            //?
+            res.json(dbCrime);
+          });
+      });
+
+    //  !!!!!!!!!   FINSIH    // POST route for saving a new post
+      app.post("/api/surveys", function(req, res) {
+        console.log(req.body);
+        db.Survey.create({
+          neighborhood: req.body.neighborhood,
+          body: req.body.body,
+          category: req.body.category
+        })
+          .then(function(dbSurvey) {
+            res.json(dbSurvey);
+          });
+      });
 
     //   // DELETE route for deleting posts
     //   app.delete("/api/posts/:id", function(req, res) {
