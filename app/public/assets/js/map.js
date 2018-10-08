@@ -36,7 +36,7 @@ $(document).ready(function () {
         for (let i = 0; i < neighborhoods.length; i++) {
             var option = $("<option>");
             option.text(neighborhoods[i]).val(neighborhoods[i]);
-            $("#options").append(option);
+            $("select").append(option);
         }
     });
 
@@ -64,17 +64,19 @@ $(document).ready(function () {
         event.preventDefault();
         var key = "AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA";
         var input = $("#search").val();
+        console.log(input);
 
         $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?key=" + key + "&input=" + input + "&inputtype=textquery&types=establishment&locationbias=rectangle:" + south + "," + west + "|" + east + "," + north,
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + input + "&inputtype=textquery&types=establishment&fields=photos,formatted_address,name,rating,opening_hours,geometry&locationbias=rectangle:" + south + "," + west + "|" + east + "," + north + "&key=" + key,
             method: "GET"
         }).then(function (res) {
-            var placeResults = res.predictions;
-            var name;
-            var place_id;
-            for (let i = 0; i < placeResults.length; i++) {
 
+            var placeResults = res.predictions;
+            for (let i = 0; i < placeResults.length; i++) {
+                var place_id = placeResults[i].place_id;
+                places.push(place_id);
             }
+            console.log(places);
             console.log(res);
         });
     });
@@ -82,9 +84,10 @@ $(document).ready(function () {
     // Initialize Map
     function initMap(location) {
 
-        // Find neighborhood center point
+        // Find neighborhood max, min, and center points
         var xArray = [];
         var yArray = [];
+        var pointMid = {};
         for (let i = 0; i < location.length; i++) {
             xArray.push(location[i][1]);
         }
@@ -95,15 +98,14 @@ $(document).ready(function () {
         east = Math.max(...xArray);
         south = Math.min(...yArray);
         north = Math.max(...yArray);
-        var midLat = ((east + west) / 2);
-        var midLng = ((north + south) / 2);
-        var center = { lat: midLat, lng: midLng };
+        pointMid.lat = ((east + west) / 2);
+        pointMid.lng = ((north + south) / 2);
 
         // Display centered map
         var mapDiv = document.getElementById('map');
         var mapOptions = {
-            center: center,
-            zoom: 14
+            center: pointMid,
+            zoom: 12
         };
         var map = new google.maps.Map(mapDiv, mapOptions);
 
@@ -123,13 +125,21 @@ $(document).ready(function () {
         };
         var polyline = new google.maps.Polyline(polylineOptions);
         polyline.setMap(map);
+
+        // // Fit map to bounds
+        // var bounds = new google.maps.LatLngBounds();
+        // for (var i = 0; i < location.length; i++) {
+        //     bounds.extend(location[i].getPosition());
+        // }
+        // map.fitBounds(bounds);
     };
 
     // Places result constructor function
-    function Place(name, place_id, latitude, longitude) {
-        this.name = raining;
-        this.place_id = place_id;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    };
+    // function Place(name, place_id, latitude, longitude) {
+    //     this.name = raining;
+    //     this.place_id = place_id;
+    //     this.latitude = latitude;
+    //     this.longitude = longitude;
+    // };
+    // $('select').formSelect();
 });

@@ -1,6 +1,7 @@
 #map {
     height: 700px;
-    width: 700px;
+    width: 500px;
+    /* display: inline- block; */
 }
 
 /* body {
@@ -14,7 +15,7 @@
       color: black;
   }
 
-  .nav-bar {
+  .nav {
       color: black;
       background-color: red; 
   }
@@ -22,3 +23,8 @@
   #location-input {
       color: pink; 
   }
+
+#drop-down {
+    color: purple; 
+}
+
