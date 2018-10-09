@@ -1,25 +1,17 @@
-// Dependencies
-// =============================================================
-// var path = require("path");
+var path = require("path");
 
-// Routes
-// =============================================================
-// module.exports = function(app) {
+module.exports = function (app) {
 
-//   // Each of the below routes just handles the HTML page that the user gets sent to.
+    app.get("/", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/mainpage.html"));
+    });
 
-//   // index route loads view.html
-//   app.get("/", function(req, res) {
-//     res.sendFile(path.join(__dirname, "../public/blog.html"));
-//   });
-
-//   app.get("/cms", function(req, res) {
-//     res.sendFile(path.join(__dirname, "../public/cms.html"));
-//   });
-
-//   // blog route loads blog.html
-//   app.get("/blog", function(req, res) {
-//     res.sendFile(path.join(__dirname, "../public/blog.html"));
-//   });
-
-// };
+    app.get("/:query", function (req, res) {
+        switch (req.params.query) {
+            case "mainmapresults":
+                res.sendFile(path.join(__dirname, "../public/mainmapresults.html"));
+                break;
+            default: res.sendFile(path.join(__dirname, "../public/404.html"));
+        };
+    });
+};
