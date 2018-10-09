@@ -52,6 +52,7 @@ $(document).ready(function () {
         var urlIndex = neighborhoods.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
         console.log("URL: " + url);
+        sessionStorage.setItem("neighborhoodInput", neighborhoodInput);
 
         // Get the coordinates defining the chosen neighborhood
         $.ajax({
@@ -60,12 +61,7 @@ $(document).ready(function () {
         }).then(function (res) {
             location = res.simple_shape.coordinates[0][0];
             initMap(location);
-        }).then(() => {
-            console.log("hello");
-            $.get("/api/crimes/neighborhoods/" + neighborhoodInput, (response) => {
-                console.log(response);
-                sessionStorage.setItem("response", response)
-            })
+            console.log(location);
         })
     });
 

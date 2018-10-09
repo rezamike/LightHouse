@@ -148,6 +148,15 @@
   </main>
 
   </div>
+<script>
+  var neighborhood = sessionStorage.getItem("neighborhoodInput")
+$.ajax({
+  url: "/api/crimes/neighborhoods/" + neighborhood,
+  method: "GET"
+}).then(function(data){
+  console.log(data);
+})
+</script>
 
  </body>
  
