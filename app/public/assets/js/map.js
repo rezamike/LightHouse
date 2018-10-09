@@ -1,21 +1,34 @@
 $(document).ready(function () {
 
+    // Receive data from session storage
+    var neighborhoodNames = JSON.parse(sessionStorage.getItem("neighborhoodNames"));
+    var neighborhoodInput = sessionStorage.getItem("neighborhoodInput");
+
+    // Define global variables
     const key = "AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA";
-    var neighborhoodLinks = [];
-    var neighborhoodNames = [];
     var location;
     var pointMid = {};
     var radius;
     var placeResults = [];
 
-    // Receive neighborhood names from LA Times API
+    // Check for click events on the navbar burger icon
+    $(".navbar-menu").click(function () {
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        // $(".navbar-link").toggleClass("is-active");
+        $(".navbar-item.about").toggleClass("is-active")
+        $(".navbar-item.safety").toggleClass("is-active");
+        $(".navbar-item.disclaimer").toggleClass("is-active");
+    });
+
+    // Receive neighborhood API links from LA Times
     $.ajax({
         url: "https://cors-anywhere.herokuapp.com/http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive/1.0/boundary-set/la-county-neighborhoods-v6.json",
         method: "GET"
     }).then(function (res) {
 
+        var neighborhoodLinks = [];
         var paths = res.boundaries;
-        console.log(paths);
 
         // Populate array of API links
         for (let i = 0; i < paths.length; i++) {
@@ -25,30 +38,10 @@ $(document).ready(function () {
             neighborhoodLinks.push(baseURL + path);
         }
 
-        // Populate array of neighborhood names
-        for (let i = 0; i < paths.length; i++) {
-            var path = paths[i];
-            var neighborhood = path.slice(14, -27).replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase());
-            neighborhoodNames.push(neighborhood);
-        }
-
-        // Populate neighborhoods into the dropdown
-        for (let i = 0; i < neighborhoodNames.length; i++) {
-            var option = $("<option>");
-            option.text(neighborhoodNames[i]).val(neighborhoodNames[i]);
-            $("select").append(option);
-        }
-    });
-
-    $("#chooseNeighborhood").on("submit", function (event) {
-
-        event.preventDefault();
-        var neighborhoodInput = $("#options").val();
-        console.log("Neighborhood: " + neighborhoodInput);
         var urlIndex = neighborhoodNames.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
         console.log("URL: " + url);
-        
+
         // Get the coordinates defining the chosen neighborhood
         $.ajax({
             url: "https://cors-anywhere.herokuapp.com/" + url,
@@ -56,21 +49,13 @@ $(document).ready(function () {
         }).then(function (res) {
             location = res.simple_shape.coordinates[0][0];
             console.log(location);
-            sessionStorage.clear();
-            sessionStorage.setItem("neighborhoodCoordinates", JSON.stringify(location));
             initMap(location);
         })
+
     });
 
-    $("#chose").click(function (data) {
-        window.location.replace(`../mainmapresults`);
-    });
-
-    $("#goHome").click(function (data) {
-        window.location.replace("../mainpage1");
-    });
-
-    $("#chooseLocation").on("submit", function (event) {
+    // Search for a location with Google Places API
+    $("#searchLocation").on("submit", function (event) {
 
         event.preventDefault();
         var input = $("#search").val();
@@ -103,10 +88,8 @@ $(document).ready(function () {
         });
     });
 
-    // Initialize Map
+    // Initialize map
     function initMap(location) {
-
-        console.log(location)
 
         // Calculate neighborhood latitude/longitude max & min, center point, and radius
         var xArray = [];
@@ -158,12 +141,7 @@ $(document).ready(function () {
         // map.fitBounds(bounds);
     };
 
-    function Place(name, place_id, coordinates) {
-        this.name = name,
-            this.place_id = place_id,
-            this.coordinates = coordinates
-    };
-
+    // Initialize map with markers
     function initMarkers(placeResults) {
 
         // Display centered map
@@ -221,5 +199,15 @@ $(document).ready(function () {
         var d = ((R * c) * 1000) / 2; // Average radius in m 
         return d;
     }
-    //$('select').formSelect();
+
+    // Constructor function for place results
+    function Place(name, place_id, coordinates) {
+        this.name = name,
+            this.place_id = place_id,
+            this.coordinates = coordinates
+    };
+
+    $("#goHome").click(function (data) {
+        window.location.replace("../mainpage1");
+    });
 });
