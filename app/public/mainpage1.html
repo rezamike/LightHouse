@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!---------------BULMA------------------------------------- -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 
     <!-----------------BULMA AWESOME FONT  ------------------------- -->
@@ -16,10 +17,13 @@
     <!-- ----------------------------JQUERY ----------------------------- -->
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!----------------GOOGLE FONTS -------------------------------->
+
     <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
 
     <!-------------- CSS -------------------------------------->
+    
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <!---------------------JQUERY---------------------- -->
@@ -28,6 +32,7 @@
         crossorigin="anonymous"></script>
 
     <!-- -----------------JAVASCRIPT ----------------------------->
+    <!-- <script defer src="./assets/js/test.js"></script> -->
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
 
@@ -40,38 +45,38 @@
 
 <body>
 
-    <!-- ---------CONTAINER ------------ ----------- -->
+  <!-- ---------CONTAINER ------------ ----------- -->
 
-    <div class="app-container">
-
-
-        <!-- ------------------NAV BAR -------------------------- -->
-        <header class="app-header">
-            <nav class="navbar is-fixed-top">
-                <div class="container">
-
-                    <!-------------------------------------------- -->
-
-                    <div class="navbar-brand">
-                        <div class="navbar-item">
-                            <a class="brand">
-                                <div class="brand-content">
-                                    <div class="brand-title">Lighthouse</div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- -------------NAVBAR BURGER BURGER ------------- -->
-
-                        <div class="navbar-burger burger" data-target="mainNav">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
+  <div class="app-container">
 
 
-                    <!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
+  <!-- ------------------NAV BAR -------------------------- -->
+    <header class="app-header">
+      <nav class="navbar is-fixed-top">
+        <div class="container">
+
+<!-------------------------------------------- -->
+
+          <div class="navbar-brand">
+          <div class="navbar-item">
+            <a class="brand">
+              <div class="brand-content">
+                <div class="brand-title">Lighthouse</div>
+            </div>
+          </a>
+        </div>
+
+  <!-- -------------NAVBAR BURGER BURGER ------------- -->
+
+            <div class="navbar-burger burger" data-target="mainNav">
+              <span></span>
+              <span></span>
+              <span></span> 
+              </div> 
+         </div>
+
+
+<!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
 
           <div class ="navbar-menu" id="mainNav">
               <div class="navbar-end">
@@ -81,27 +86,27 @@
 
 
 
+   
+   <!-- ---------_NAV BAR END -------------------- -->
+   
+          </div>
+        </div>
 
 
-                            <!-- ---------_NAV BAR END -------------------- -->
 
-                        </div>
-                    </div>
-
-
-
-            </nav>
+        </nav>   
         </header>
 
-        <!--------------APP CONTENT ----------- -->
+  <!--------------APP CONTENT ----------- -->
 
   <main class="app-content">
   <section class="hero is-link is-fullheight is-light">
      <div class="hero-body">
     <div class="container">
 
-
-
+  
+ 
+<!-- -----------LEFT COLUMN ------------------ -->
 
 <div class="column is-half" id="theLeft">
         <form id="chooseNeighborhood">
@@ -115,34 +120,7 @@
 
         </div>
 
-
-
-
-                    <!-- -----------LEFT COLUMN ------------------ -->
-
-                    <div class="column is-half" id="theLeft">
-
-                        <form id="chooseNeighborhood">
-                            <select id='options'>
-                                <option id="option-value"></option>
-                            </select>
-                            <label>Choose a neighborhood</label>
-
-
-                            <input href="/mainmapresults" type="submit" value="Submit">
-                        </form>
-
-                        <!--- DEEEEELEEETEEE THIS!!!!!!!!!!!!!!!-->
-                        <form id="chooseLocation">
-                            <input type="text" id="search">
-                            <input type="submit" value="Submit">
-                        </form>
-
-                        <div id="map"></div>
-
-                    </div>
-
-                    <!-- <div class="columns is-6">
+    <!-- <div class="columns is-6">
 
           <form>
               <select id='options'>
@@ -158,9 +136,9 @@
 
 
 
-                    <!------------------ RIGHT COLUMN ------------------------------ -->
+<!------------------ RIGHT COLUMN ------------------------------ -->
 
-                    <!-- <div class="column is-6">
+        <!-- <div class="column is-6">
 
 
 
@@ -168,25 +146,19 @@
         </div> -->
 
 
-
 <!-------------APP CONTENT END -------------------- -->
     </div>
-    
+
    </div>
 
-                    <!-------------APP CONTENT END -------------------- -->
+  </section>
 
-                </div>
+   <!-------------CONTAINER END ------ ------------->
 
-            </section>
+  </main>
 
+  </div>
 
-            <!-------------CONTAINER END ------ ------------->
-
-        </main>
-
-    </div>
-
-</body>
-
-</html>
+ </body>
+ 
+ </html>
