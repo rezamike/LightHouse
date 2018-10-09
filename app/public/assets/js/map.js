@@ -48,16 +48,17 @@ $(document).ready(function () {
         var urlIndex = neighborhoodNames.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
         console.log("URL: " + url);
-        sessionStorage.setItem("neighborhoodInput", neighborhoodInput);
-
+        
         // Get the coordinates defining the chosen neighborhood
         $.ajax({
             url: "https://cors-anywhere.herokuapp.com/" + url,
             method: "GET"
         }).then(function (res) {
             location = res.simple_shape.coordinates[0][0];
-            initMap(location);
             console.log(location);
+            sessionStorage.clear();
+            sessionStorage.setItem("neighborhoodCoordinates", JSON.stringify(location));
+            initMap(location);
         })
     });
 
@@ -104,6 +105,8 @@ $(document).ready(function () {
 
     // Initialize Map
     function initMap(location) {
+
+        console.log(location)
 
         // Calculate neighborhood latitude/longitude max & min, center point, and radius
         var xArray = [];
