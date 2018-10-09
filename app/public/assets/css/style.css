@@ -1,10 +1,3 @@
-#map {
-    height: 700px;
-    width: 500px;
-    
-    
-    /* display: inline- block; */
-}
 
 .hero-body {
     background: url("../images/lighthouse2.png");
@@ -14,32 +7,40 @@
     background-size: cover; 
 }
 
-/* 
-    display: block;
-    max-width: 100%;
-    height: auto; 
+.brand-title {
+    color: navy; 
+    font: bold; 
+}
 
-}  */
+#about {
+    color: navy
+}
+
+#safetyRating {
+    color: navy
+}
+
+#disclaimer {
+    color: navy; 
+}
+
+#map {
+    height: 700px;
+    width: 500px;
+}
 
   #options {
       color: black;
-  }
-
-  .nav {
-      color: black;
-      background-color: red; 
   }
 
   #location-input {
       color: pink; 
   }
 
-#drop-down {
-    color: purple; 
-}
 #theRight {
     margin-left: 25px;
 }
+
 #theLeft {
    
 }
