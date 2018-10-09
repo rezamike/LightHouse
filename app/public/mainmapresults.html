@@ -149,6 +149,7 @@
 
   </div>
 <script>
+  $(document).ready(function () {
   var neighborhood = sessionStorage.getItem("neighborhoodInput")
 $.ajax({
   url: "/api/crimes/neighborhoods/" + neighborhood,
@@ -156,6 +157,78 @@ $.ajax({
 }).then(function(data){
   console.log(data);
 })
+
+var coordinates = sessionStorage.getItem("neighborhoodCoordinates");
+initMap(JSON.parse(coordinates));
+console.log(coordinates);
+
+ function initMap(location) {
+
+// Calculate neighborhood latitude/longitude max & min, center point, and radius
+var pointMid = {};
+var xArray = [];
+var yArray = [];
+for (let i = 0; i < location.length; i++) {
+    xArray.push(location[i][1]);
+}
+for (let i = 0; i < location.length; i++) {
+    yArray.push(location[i][0]);
+}
+var latMin = Math.min(...xArray);
+var latMax = Math.max(...xArray);
+var lngMin = Math.min(...yArray);
+var lngMax = Math.max(...yArray);
+pointMid.lat = ((latMax + latMin) / 2);
+pointMid.lng = ((lngMax + lngMin) / 2);
+radius = haversineFormula(latMin, lngMin, latMax, lngMax);
+
+// Display centered map
+var mapDiv = document.getElementById('map');
+var mapOptions = {
+    center: pointMid,
+    zoom: 12
+};
+var map = new google.maps.Map(mapDiv, mapOptions);
+
+// Display neighborhood boundary on the map 
+var boundary = [];
+for (let i = 0; i < location.length; i++) {
+    // Pass each point of the polygon to bounds
+    var coordinates = location[i];
+    var latitude = coordinates[1];
+    var longitude = coordinates[0];
+    boundary.push(new google.maps.LatLng(latitude, longitude));
+}
+var polylineOptions = {
+    path: boundary,
+    strokeColor: "#ADD8E6",
+    strokeWeight: 2.5
+};
+var polyline = new google.maps.Polyline(polylineOptions);
+polyline.setMap(map);
+
+// // Fit map to neighborhood bounds
+// var bounds = new google.maps.LatLngBounds();
+// for (var i = 0; i < location.length; i++) {
+//     bounds.extend(location[i].getPosition());
+// }
+// map.fitBounds(bounds);
+};
+
+function haversineFormula(lat1, lon1, lat2, lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = (lat2 - lat1) * (Math.PI / 180);  // Convert from degrees to radians
+        var dLon = (lon2 - lon1) * (Math.PI / 180);
+        var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2)
+            ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = (R * c) * 1000; // Distance in m
+        return d;
+    }
+  });
 </script>
 
  </body>

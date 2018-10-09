@@ -47,8 +47,9 @@ $(document).ready(function () {
         console.log("Neighborhood: " + neighborhoodInput);
         var urlIndex = neighborhoodNames.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
+        
         console.log("URL: " + url);
-        sessionStorage.setItem("neighborhoodInput", neighborhoodInput);
+        
 
         // Get the coordinates defining the chosen neighborhood
         $.ajax({
@@ -56,6 +57,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (res) {
             location = res.simple_shape.coordinates[0][0];
+            sessionStorage.setItem("neighborhoodCoordinates", JSON.stringify(location));
             initMap(location);
             console.log(location);
         })
