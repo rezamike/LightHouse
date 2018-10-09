@@ -3,9 +3,9 @@ $(document).ready(function () {
     const key = "AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA";
     var neighborhoodLinks = [];
     var neighborhoodNames = [];
+    var location;
     var pointMid = {};
     var radius;
-    var location;
     var placeResults = [];
 
     // Receive neighborhood names from LA Times API
@@ -65,25 +65,26 @@ $(document).ready(function () {
         })
     });
 
-    $("#chose").click(function(data){
+    $("#chose").click(function (data) {
         window.location.replace(`../mainmapresults`);
-       });
+    });
 
-    $("#goHome").click(function(data){
+    $("#goHome").click(function (data) {
         window.location.replace("../mainpage1");
-       });
+    });
+
     $("#chooseLocation").on("submit", function (event) {
 
         event.preventDefault();
         var input = $("#search").val();
         console.log(input);
+        console.log("radius: " + radius);
 
         $.ajax({
             url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pointMid.lat + "," + pointMid.lng + "&radius=" + radius + "&type=establishment&keyword=" + input + "&key=" + key,
             method: "GET"
         }).then(function (res) {
 
-            console.log(res)
             var results = res.results;
             for (let i = 0; i < results.length; i++) {
                 var result = results[i];
@@ -93,7 +94,6 @@ $(document).ready(function () {
                 placeResults.push(new Place(name, place_id, coordinates));
             };
             console.log(placeResults);
-            console.log(res);
             initMarkers(placeResults);
         }).then((res) => {
             $.post(`/neighborhoods/${input}`, (response) => {
@@ -207,7 +207,7 @@ $(document).ready(function () {
         }
         map.fitBounds(bounds);
     };
-    
+
     // Haversine formula to calculate distance in meters from 2 coordinates
     function haversineFormula(lat1, lon1, lat2, lon2) {
         var R = 6371; // Radius of the earth in km
@@ -219,7 +219,7 @@ $(document).ready(function () {
             Math.sin(dLon / 2) * Math.sin(dLon / 2)
             ;
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = (R * c) * 1000; // Distance in m
+        var d = ((R * c) * 1000) / 2; // Average radius in m 
         return d;
     }
     //$('select').formSelect();
