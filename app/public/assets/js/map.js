@@ -47,9 +47,9 @@ $(document).ready(function () {
         console.log("Neighborhood: " + neighborhoodInput);
         var urlIndex = neighborhoodNames.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
-        
+        sessionStorage.setItem("neighborhood", neighborhoodInput);
         console.log("URL: " + url);
-        
+
 
         // Get the coordinates defining the chosen neighborhood
         $.ajax({
@@ -63,13 +63,13 @@ $(document).ready(function () {
         })
     });
 
-    $("#chose").click(function(data){
+    $("#chose").click(function (data) {
         window.location.replace(`../mainmapresults`);
-       });
+    });
 
-    $("#goHome").click(function(data){
+    $("#goHome").click(function (data) {
         window.location.replace("../mainpage1");
-       });
+    });
     $("#chooseLocation").on("submit", function (event) {
 
         event.preventDefault();
@@ -205,7 +205,7 @@ $(document).ready(function () {
         }
         map.fitBounds(bounds);
     };
-    
+
     // Haversine formula to calculate distance in meters from 2 coordinates
     function haversineFormula(lat1, lon1, lat2, lon2) {
         var R = 6371; // Radius of the earth in km

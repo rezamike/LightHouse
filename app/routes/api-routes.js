@@ -24,8 +24,6 @@ module.exports = function (app) {
       }
     })
       .then(function (dbCrime) {
-
-        //?
         res.json(dbCrime);
       });
   });
