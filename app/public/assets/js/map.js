@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    const key = "AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA";
+    var neighborhoodInput;
+    var input;
     var neighborhoodLinks = [];
     var neighborhoods = [];
     var places = [];
@@ -7,7 +10,8 @@ $(document).ready(function () {
     var west;
     var east;
     var north;
-    var neighborhoodInput;
+    var pointMid = {};
+    var location;
 
     // Receive neighborhood names from LA Times API
     $.ajax({
@@ -23,7 +27,6 @@ $(document).ready(function () {
             path = path.substring(0, path.length - 1).concat(".json");
             var baseURL = "http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive";
             neighborhoodLinks.push(baseURL + path);
-            console.log(neighborhoodLinks[i]);
         }
 
         // Populate array of neighborhood names
@@ -44,7 +47,7 @@ $(document).ready(function () {
     $("#chooseNeighborhood").on("submit", function (event) {
 
         event.preventDefault();
-        var neighborhoodInput = $("#options").val();
+        neighborhoodInput = $("#options").val();
         console.log("Neighborhood: " + neighborhoodInput);
         var urlIndex = neighborhoods.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
@@ -55,7 +58,7 @@ $(document).ready(function () {
             url: "https://cors-anywhere.herokuapp.com/" + url,
             method: "GET"
         }).then(function (res) {
-            var location = res.simple_shape.coordinates[0][0];
+            location = res.simple_shape.coordinates[0][0];
             initMap(location);
         }).then((res) => {
             $.get("/api/crimes/neighborhoods/" + neighborhoodInput, (response) => {
@@ -66,22 +69,31 @@ $(document).ready(function () {
     $("#chooseLocation").on("submit", function (event) {
 
         event.preventDefault();
-        var key = "AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA";
-        var input = $("#search").val();
+        // var lat = (((Math.abs(north) + Math.abs(south)) / 2) * 111.32);
+        // var lng = (((Math.abs(east) + Math.abs(west)) / 2) * 40075 * Math.cos(lat));
+        // var radius = ((lat + lng) / 2) * 1000;
+        // console.log(radius)
+        var radius = 3000;
+        input = $("#search").val();
         console.log(input);
 
         $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + input + "&inputtype=textquery&types=establishment&fields=photos,formatted_address,name,rating,opening_hours,geometry&locationbias=rectangle:" + south + "," + west + "|" + east + "," + north + "&key=" + key,
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pointMid.lat + "," + pointMid.lng + "&rankby=distance&type=establishment&keyword=" + input + "&key=" + key,
             method: "GET"
         }).then(function (res) {
 
-            var placeResults = res.predictions;
-            for (let i = 0; i < placeResults.length; i++) {
-                var place_id = placeResults[i].place_id;
-                places.push(place_id);
-            }
+            console.log(res)
+            var results = res.results;
+            for (let i = 0; i < results.length; i++) {
+                var result = results[i];
+                var name = result.name;
+                var place_id = result.place_id;
+                var coordinates = result.geometry.location;
+                places.push(new Place(name, place_id, coordinates));
+            };
             console.log(places);
             console.log(res);
+            initMarkers(places);
         }).then((res) => {
             $.post(`/neighborhoods/${input}`, (response) => {
                 console.log(response);
@@ -90,16 +102,14 @@ $(document).ready(function () {
             $.get("/api/surveys/", (res) => {
 
             })
-        })
+        });
     });
 
     // Initialize Map
     function initMap(location) {
-
         // Find neighborhood max, min, and center points
         var xArray = [];
         var yArray = [];
-        var pointMid = {};
         for (let i = 0; i < location.length; i++) {
             xArray.push(location[i][1]);
         }
@@ -138,7 +148,7 @@ $(document).ready(function () {
         var polyline = new google.maps.Polyline(polylineOptions);
         polyline.setMap(map);
 
-        // // Fit map to bounds
+        // // Fit map to neighborhood bounds
         // var bounds = new google.maps.LatLngBounds();
         // for (var i = 0; i < location.length; i++) {
         //     bounds.extend(location[i].getPosition());
@@ -146,12 +156,54 @@ $(document).ready(function () {
         // map.fitBounds(bounds);
     };
 
-    // Places result constructor function
-    // function Place(name, place_id, latitude, longitude) {
-    //     this.name = raining;
-    //     this.place_id = place_id;
-    //     this.latitude = latitude;
-    //     this.longitude = longitude;
-    // };
-    // $('select').formSelect();
+    function Place(name, place_id, coordinates) {
+        this.name = name,
+            this.place_id = place_id,
+            this.coordinates = coordinates
+    };
+
+    function initMarkers(places) {
+
+        // Display centered map
+        var mapDiv = document.getElementById('map');
+        var mapOptions = {
+            center: pointMid,
+            zoom: 12
+        };
+        var map = new google.maps.Map(mapDiv, mapOptions);
+
+        // Display neighborhood boundary on the map 
+        var boundary = [];
+        for (let i = 0; i < location.length; i++) {
+            // Pass each point of the polygon to bounds
+            var coordinates = location[i];
+            var latitude = coordinates[1];
+            var longitude = coordinates[0];
+            boundary.push(new google.maps.LatLng(latitude, longitude));
+        }
+        var polylineOptions = {
+            path: boundary,
+            strokeColor: "#ADD8E6",
+            strokeWeight: 2.5
+        };
+        var polyline = new google.maps.Polyline(polylineOptions);
+        polyline.setMap(map);
+
+        // Create markers for place search results
+        var markers = [];
+        for (let i = 0; i < places.length; i++) {
+            var marker = new google.maps.Marker({ position: places[i].coordinates, map: map, id: places[i].place_id });
+            markers.push(marker);
+        }
+        console.log(markers);
+
+        // Fit map to marker bounds
+        var bounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < markers.length; i++) {
+            bounds.extend(markers[i].getPosition());
+        }
+        map.fitBounds(bounds);
+    };
+
+    //$('select').formSelect();
 });
