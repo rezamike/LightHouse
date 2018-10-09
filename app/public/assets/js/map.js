@@ -58,8 +58,7 @@ $(document).ready(function () {
             var location = res.simple_shape.coordinates[0][0];
             initMap(location);
         }).then((res) => {
-            $.post(`/neighborhoods/${neighborhoodInput}`, (response) => {
-                console.log(response);
+            $.get("/api/crimes/neighborhoods/" + neighborhoodInput, (response) => {
             })
         })
     });
@@ -86,6 +85,10 @@ $(document).ready(function () {
         }).then((res) => {
             $.post(`/neighborhoods/${input}`, (response) => {
                 console.log(response);
+            })
+        }).then((res) => {
+            $.get("/api/surveys/", (res) => {
+
             })
         })
     });
