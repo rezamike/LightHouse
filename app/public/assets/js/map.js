@@ -22,19 +22,19 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: "/api/crimes/neighborhoods/" + neighborhoodInput,
-      method: "GET"
+        url: "/api/crimes/neighborhoods/" + neighborhoodInput,
+        method: "GET"
     }).then(function (data) {
-      $(".neighborhoodName").text(neighborhoodInput + " Rating")
-      $(".rating").text("rating: " + data[0].rating)
-      $(".totalCrimes").text("total crime: " + data[0].totalCrimes)
-      $(".kidnap").text("kidnap: " + data[0].kidnap)
-      $(".violent").text("violence: " + data[0].violent)
-      $(".property").text("property: " + data[0].property)
-      $(".trespass").text("trespass: " + data[0].trespass)
-      $(".lighting").text("lighting: " + data[0].lighting)
-      $(".clean").text("cleanliness: " + data[0].clean)
-      $(".population").text("population: " + data[0].population)
+        $(".neighborhoodName").text(neighborhoodInput + " Rating")
+        $(".rating").text("rating: " + data[0].rating)
+        $(".totalCrimes").text("total crime: " + data[0].totalCrimes)
+        $(".kidnap").text("kidnap: " + data[0].kidnap)
+        $(".violent").text("violence: " + data[0].violent)
+        $(".property").text("property: " + data[0].property)
+        $(".trespass").text("trespass: " + data[0].trespass)
+        $(".lighting").text("lighting: " + data[0].lighting)
+        $(".clean").text("cleanliness: " + data[0].clean)
+        $(".population").text("population: " + data[0].population)
     })
 
     // Receive neighborhood API links from LA Times
@@ -218,8 +218,8 @@ $(document).ready(function () {
             this.place_id = place_id,
             this.coordinates = coordinates
 
-            sessionStorage.setItem("businessName", this.name);
-            sessionStorage.setItem("uniqueID", this.place_id);
+        sessionStorage.setItem("businessName", this.name);
+        sessionStorage.setItem("uniqueID", this.place_id);
     };
 
     $("#goHome").click(function (data) {
