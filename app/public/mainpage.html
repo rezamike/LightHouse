@@ -73,11 +73,12 @@
 
                     <!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
 
-                    <div class="navbar-menu" id="mainNav">
-                        <div class="navbar-end">
-                            <a class="navbar-item is-active">About</a>
-                            <a class="navbar-item">Safety Rating</a>
-                            <a class="navbar-item">Disclaimer</a>
+          <div class ="navbar-menu" id="mainNav">
+              <div class="navbar-end">
+                <a class="navbar-item is-active" id="about">About</a>
+                <a class="navbar-item" id="safetyRating">Safety Rating</a>
+                <a class="navbar-item" id="disclaimer">Disclaimer</a>
+
 
 
 
@@ -94,10 +95,25 @@
 
         <!--------------APP CONTENT ----------- -->
 
-        <main class="app-content">
-            <section class="hero is-link is-fullheight is-light">
-                <div class="hero-body">
-                    <div class="container"></div>
+  <main class="app-content">
+  <section class="hero is-link is-fullheight is-light">
+     <div class="hero-body">
+    <div class="container">
+
+
+
+
+<div class="column is-half" id="theLeft">
+        <form id="chooseNeighborhood">
+            <select id='options'>
+                <option id="option-value"></option>
+            </select>
+            <label>Choose a neighborhood</label>
+            
+            <input type="submit" value="Submit">
+            </form>
+
+        </div>
 
 
 
@@ -152,11 +168,18 @@
         </div> -->
 
 
+
+<!-------------APP CONTENT END -------------------- -->
+    </div>
+    
+   </div>
+
                     <!-------------APP CONTENT END -------------------- -->
 
                 </div>
 
             </section>
+
 
             <!-------------CONTAINER END ------ ------------->
 
