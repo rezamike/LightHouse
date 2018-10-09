@@ -1,17 +1,12 @@
 $(document).ready(function () {
 
     const key = "AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA";
-    var neighborhoodInput;
-    var input;
     var neighborhoodLinks = [];
-    var neighborhoods = [];
-    var places = [];
-    var south;
-    var west;
-    var east;
-    var north;
+    var neighborhoodNames = [];
     var pointMid = {};
+    var radius;
     var location;
+    var placeResults = [];
 
     // Receive neighborhood names from LA Times API
     $.ajax({
@@ -21,6 +16,7 @@ $(document).ready(function () {
 
         var paths = res.boundaries;
         console.log(paths);
+
         // Populate array of API links
         for (let i = 0; i < paths.length; i++) {
             var path = paths[i];
@@ -33,13 +29,13 @@ $(document).ready(function () {
         for (let i = 0; i < paths.length; i++) {
             var path = paths[i];
             var neighborhood = path.slice(14, -27).replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase());
-            neighborhoods.push(neighborhood);
+            neighborhoodNames.push(neighborhood);
         }
 
         // Populate neighborhoods into the dropdown
-        for (let i = 0; i < neighborhoods.length; i++) {
+        for (let i = 0; i < neighborhoodNames.length; i++) {
             var option = $("<option>");
-            option.text(neighborhoods[i]).val(neighborhoods[i]);
+            option.text(neighborhoodNames[i]).val(neighborhoodNames[i]);
             $("select").append(option);
         }
     });
@@ -47,9 +43,9 @@ $(document).ready(function () {
     $("#chooseNeighborhood").on("submit", function (event) {
 
         event.preventDefault();
-        neighborhoodInput = $("#options").val();
+        var neighborhoodInput = $("#options").val();
         console.log("Neighborhood: " + neighborhoodInput);
-        var urlIndex = neighborhoods.indexOf(neighborhoodInput);
+        var urlIndex = neighborhoodNames.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
         console.log("URL: " + url);
         sessionStorage.setItem("neighborhoodInput", neighborhoodInput);
@@ -75,16 +71,11 @@ $(document).ready(function () {
     $("#chooseLocation").on("submit", function (event) {
 
         event.preventDefault();
-        // var lat = (((Math.abs(north) + Math.abs(south)) / 2) * 111.32);
-        // var lng = (((Math.abs(east) + Math.abs(west)) / 2) * 40075 * Math.cos(lat));
-        // var radius = ((lat + lng) / 2) * 1000;
-        // console.log(radius)
-        var radius = 3000;
-        input = $("#search").val();
+        var input = $("#search").val();
         console.log(input);
 
         $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pointMid.lat + "," + pointMid.lng + "&rankby=distance&type=establishment&keyword=" + input + "&key=" + key,
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pointMid.lat + "," + pointMid.lng + "&radius=" + radius + "&type=establishment&keyword=" + input + "&key=" + key,
             method: "GET"
         }).then(function (res) {
 
@@ -95,11 +86,11 @@ $(document).ready(function () {
                 var name = result.name;
                 var place_id = result.place_id;
                 var coordinates = result.geometry.location;
-                places.push(new Place(name, place_id, coordinates));
+                placeResults.push(new Place(name, place_id, coordinates));
             };
-            console.log(places);
+            console.log(placeResults);
             console.log(res);
-            initMarkers(places);
+            initMarkers(placeResults);
         }).then((res) => {
             $.post(`/neighborhoods/${input}`, (response) => {
                 console.log(response);
@@ -113,7 +104,8 @@ $(document).ready(function () {
 
     // Initialize Map
     function initMap(location) {
-        // Find neighborhood max, min, and center points
+
+        // Calculate neighborhood latitude/longitude max & min, center point, and radius
         var xArray = [];
         var yArray = [];
         for (let i = 0; i < location.length; i++) {
@@ -122,12 +114,13 @@ $(document).ready(function () {
         for (let i = 0; i < location.length; i++) {
             yArray.push(location[i][0]);
         }
-        west = Math.min(...xArray);
-        east = Math.max(...xArray);
-        south = Math.min(...yArray);
-        north = Math.max(...yArray);
-        pointMid.lat = ((east + west) / 2);
-        pointMid.lng = ((north + south) / 2);
+        var latMin = Math.min(...xArray);
+        var latMax = Math.max(...xArray);
+        var lngMin = Math.min(...yArray);
+        var lngMax = Math.max(...yArray);
+        pointMid.lat = ((latMax + latMin) / 2);
+        pointMid.lng = ((lngMax + lngMin) / 2);
+        radius = haversineFormula(latMin, lngMin, latMax, lngMax);
 
         // Display centered map
         var mapDiv = document.getElementById('map');
@@ -168,7 +161,7 @@ $(document).ready(function () {
             this.coordinates = coordinates
     };
 
-    function initMarkers(places) {
+    function initMarkers(placeResults) {
 
         // Display centered map
         var mapDiv = document.getElementById('map');
@@ -197,8 +190,8 @@ $(document).ready(function () {
 
         // Create markers for place search results
         var markers = [];
-        for (let i = 0; i < places.length; i++) {
-            var marker = new google.maps.Marker({ position: places[i].coordinates, map: map, id: places[i].place_id });
+        for (let i = 0; i < placeResults.length; i++) {
+            var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
             markers.push(marker);
         }
         console.log(markers);
@@ -210,6 +203,20 @@ $(document).ready(function () {
         }
         map.fitBounds(bounds);
     };
-
+    
+    // Haversine formula to calculate distance in meters from 2 coordinates
+    function haversineFormula(lat1, lon1, lat2, lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = (lat2 - lat1) * (Math.PI / 180);  // Convert from degrees to radians
+        var dLon = (lon2 - lon1) * (Math.PI / 180);
+        var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2)
+            ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = (R * c) * 1000; // Distance in m
+        return d;
+    }
     //$('select').formSelect();
 });
