@@ -47,29 +47,29 @@ $(document).ready(function () {
         console.log("Neighborhood: " + neighborhoodInput);
         var urlIndex = neighborhoodNames.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
-        
+        sessionStorage.setItem("neighborhood", neighborhoodInput);
         console.log("URL: " + url);
-        
+
 
         // Get the coordinates defining the chosen neighborhood
-        $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/" + url,
-            method: "GET"
-        }).then(function (res) {
-            location = res.simple_shape.coordinates[0][0];
-            sessionStorage.setItem("neighborhoodCoordinates", JSON.stringify(location));
-            initMap(location);
-            console.log(location);
-        })
+        // $.ajax({
+        //     url: "https://cors-anywhere.herokuapp.com/" + url,
+        //     method: "GET"
+        // }).then(function (res) {
+        //     location = res.simple_shape.coordinates[0][0];
+        //     sessionStorage.setItem("neighborhoodCoordinates", JSON.stringify(location));
+        //     initMap(location);
+        //     console.log(location);
+        // })
     });
 
-    $("#chose").click(function(data){
+    $("#chose").click(function (data) {
         window.location.replace(`../mainmapresults`);
-       });
+    });
 
-    $("#goHome").click(function(data){
+    $("#goHome").click(function (data) {
         window.location.replace("../mainpage1");
-       });
+    });
     $("#chooseLocation").on("submit", function (event) {
 
         event.preventDefault();
@@ -93,10 +93,6 @@ $(document).ready(function () {
             console.log(placeResults);
             console.log(res);
             initMarkers(placeResults);
-        }).then((res) => {
-            $.post(`/neighborhoods/${input}`, (response) => {
-                console.log(response);
-            })
         }).then((res) => {
             $.get("/api/surveys/", (res) => {
 
@@ -157,10 +153,12 @@ $(document).ready(function () {
         // map.fitBounds(bounds);
     };
 
-    function Place(name, place_id, coordinates) {
+    function Place(name, place_id) {
         this.name = name,
-            this.place_id = place_id,
-            this.coordinates = coordinates
+        this.place_id = place_id
+
+            sessionStorage.setItem("businessName", this.name);
+            sessionStorage.setItem("uniqueID", this.place_id);
     };
 
     function initMarkers(placeResults) {
@@ -205,7 +203,7 @@ $(document).ready(function () {
         }
         map.fitBounds(bounds);
     };
-    
+
     // Haversine formula to calculate distance in meters from 2 coordinates
     function haversineFormula(lat1, lon1, lat2, lon2) {
         var R = 6371; // Radius of the earth in km
@@ -221,4 +219,12 @@ $(document).ready(function () {
         return d;
     }
     //$('select').formSelect();
+
+    // based on the form for survey submission
+    $("").on("submit", function (event) {
+
+    $.post(`/neighborhoods/${input}`, (response) => {
+        console.log(response);
+    })
+    });
 });
