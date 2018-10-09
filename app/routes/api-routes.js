@@ -10,10 +10,9 @@ module.exports = function (app) {
 
   // GET route for getting all of the survey information and mesh into a formula to calculate average score
   app.get("/api/surveys/", function (req, res) {
-    console.log("hit me")
     db.Survey.findAll({})
       .then(function (dbSurvey) {
-        console.log()
+        res.json(dbSurvey);
       });
   });
 
