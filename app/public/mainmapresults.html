@@ -2,42 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!---------------BULMA------------------------------------- -->
+  <!---------------BULMA------------------------------------- -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 
-    <!-----------------BULMA AWESOME FONT  ------------------------- -->
+  <!-----------------BULMA AWESOME FONT  ------------------------- -->
 
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
-    <!-- ----------------------------JQUERY ----------------------------- -->
+  <!-- ----------------------------JQUERY ----------------------------- -->
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!----------------GOOGLE FONTS -------------------------------->
+  <!----------------GOOGLE FONTS -------------------------------->
 
-    <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
 
-    <!-------------- CSS -------------------------------------->
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <!-------------- CSS -------------------------------------->
+  <link rel="stylesheet" href="./assets/css/style.css">
 
-    <!---------------------JQUERY---------------------- -->
+  <!---------------------JQUERY---------------------- -->
 
-    <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+  <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 
-    <!-- -----------------JAVASCRIPT ----------------------------->
+  <!-- -----------------JAVASCRIPT ----------------------------->
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
 
 
-    <script defer src="assets/js/map.js"></script>
+  <script defer src="assets/js/map.js"></script>
 
-    <html class="has-navbar-fixed-top index">
+  <html class="has-navbar-fixed-top index">
 
 </head>
 
@@ -48,189 +48,217 @@
   <div class="app-container">
 
 
-  <!-- ------------------NAV BAR -------------------------- -->
+    <!-- ------------------NAV BAR -------------------------- -->
     <header class="app-header">
       <nav class="navbar is-fixed-top">
         <div class="container">
 
-<!-------------------------------------------- -->
+          <!-------------------------------------------- -->
 
           <div class="navbar-brand">
-          <div class="navbar-item">
-            <a class="brand">
-              <div class="brand-content">
-             <div class="brand-title">Lighthouse</div>
+            <div class="navbar-item">
+              <a class="brand">
+                <div class="brand-content">
+                  <div class="brand-title">Lighthouse</div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
 
-  <!-- -------------NAVBAR BURGER BURGER ------------- -->
+            <!-- -------------NAVBAR BURGER BURGER ------------- -->
 
             <div class="navbar-burger burger" data-target="mainNav">
               <span></span>
               <span></span>
-              <span></span> 
-              </div> 
-         </div>
-
-
-<!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
-
-<div class ="navbar-menu" id="mainNav">
-    <div class="navbar-end">
-      <a class="navbar-item is-active" id="about">About</a>
-      <a class="navbar-item" id="safetyRating">Safety Rating</a>
-      <a class="navbar-item" id="disclaimer">Disclaimer</a>
-
-
-  
-   
-   <!-- ---------_NAV BAR END -------------------- -->
-   
+              <span></span>
+            </div>
           </div>
-        </div>
+
+
+          <!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
+
+          <div class="navbar-menu" id="mainNav">
+            <div class="navbar-end">
+              <a class="navbar-item is-active" id="about">About</a>
+              <a class="navbar-item" id="safetyRating">Safety Rating</a>
+              <a class="navbar-item" id="disclaimer">Disclaimer</a>
 
 
 
-        </nav>   
-        </header>
 
-  <!--------------APP CONTENT ----------- -->
+              <!-- ---------_NAV BAR END -------------------- -->
 
-  <main class="app-content">
-    <section class="section is-hero">
-        
-            <div class="container">
-        
-  <!--------------COLUMNS -------------- -->
+            </div>
+          </div>
 
-  <div class="columns">   
-    
-  <!-------------- LEFT COLUMN WITH SEARCH BAR & reSULT MAP ------ -->
-  
-  <div class="colum is-half" id="theLeft">
-  <div id="map"></div>
-</div>
- 
 
-<!------------------ RIGHT COLUMN ------------------------------ -->
 
-        <div class="column is-half" id="theRight">
-            <a class="button">Search</a>
-            <input class="input" type="text" placeholder="Business">
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Neighborhood Rating
-              </p>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                Select a neighborhood, and then select what type of crime to display here.
-                
-                <br>
+      </nav>
+    </header>
+
+    <!--------------APP CONTENT ----------- -->
+
+    <main class="app-content">
+      <section class="section is-hero">
+
+        <div class="container">
+
+          <!--------------COLUMNS -------------- -->
+
+          <div class="columns">
+
+            <!-------------- LEFT COLUMN WITH SEARCH BAR & reSULT MAP ------ -->
+
+            <div class="colum is-half" id="theLeft">
+              <div id="map"></div>
+            </div>
+
+
+            <!------------------ RIGHT COLUMN ------------------------------ -->
+
+            <div class="column is-half" id="theRight">
+              <a class="button">Search</a>
+              <input class="input" type="text" placeholder="Business">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    <div class="neighborhoodName"></div>
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+
+                    <!-- /api/crimes/neighborhoods/:neighborhood -->
+                    <div class="rating"></div>
+                    <div class="totalCrimes"></div>
+                    <div class="kidnap"></div>
+                    <div class="violent"></div>
+                    <div class="property"></div>
+                    <div class="trespass"></div>
+                    <div class="lighting"></div>
+                    <div class="clean"></div>
+                    <div class="population"></div>
+                    <br>
+                  </div>
+                </div>
+
               </div>
             </div>
-            
           </div>
+
+
+          <!-------------APP CONTENT END -------------------- -->
+
         </div>
-      </div>
 
+      </section>
 
-<!-------------APP CONTENT END -------------------- -->
-      
-   </div>
+      <!-------------CONTAINER END ------ ------------->
 
-  </section>
-
-   <!-------------CONTAINER END ------ ------------->
-
-  </main>
+    </main>
 
   </div>
-<script>
-  $(document).ready(function () {
-  var neighborhood = sessionStorage.getItem("neighborhoodInput")
-$.ajax({
-  url: "/api/crimes/neighborhoods/" + neighborhood,
-  method: "GET"
-}).then(function(data){
-  console.log(data);
-})
+  <script>
+    $(document).ready(function () {
+      var neighborhood = sessionStorage.getItem("neighborhood")
+      $.ajax({
+        url: "/api/crimes/neighborhoods/" + neighborhood,
+        method: "GET"
+      }).then(function (data) {
+        $(".neighborhoodName").text(neighborhood + " Rating")
+        $(".rating").text("rating: " + data[0].rating)
+        $(".totalCrimes").text("total crime: " + data[0].totalCrimes)
+        $(".kidnap").text("kidnap: " + data[0].kidnap)
+        $(".violent").text("violence: " + data[0].violent)
+        $(".property").text("property: " + data[0].property)
+        $(".trespass").text("trespass: " + data[0].trespass)
+        $(".lighting").text("lighting: " + data[0].lighting)
+        $(".clean").text("cleanliness: " + data[0].clean)
+        $(".population").text("population: " + data[0].population)
+      })
 
-var coordinates = sessionStorage.getItem("neighborhoodCoordinates");
-initMap(JSON.parse(coordinates));
-console.log(coordinates);
+      // rating: <div class="rating"></div>
+      // totalCrimes: <div class="totalCrimes"></div>
+      // kidnap: <div class="kidnap"></div>
+      // violent: <div class="violent"></div>
+      // property: <div class="property"></div>
+      // trespass: <div class="trespass"></div>
+      // lighting: <div class="lighting"></div>
+      // clean: <div class="clean"></div>
+      // population: <div class="population"></div>
 
- function initMap(location) {
+      var coordinates = sessionStorage.getItem("neighborhoodCoordinates");
+      initMap(JSON.parse(coordinates));
+      console.log(coordinates);
 
-// Calculate neighborhood latitude/longitude max & min, center point, and radius
-var pointMid = {};
-var xArray = [];
-var yArray = [];
-for (let i = 0; i < location.length; i++) {
-    xArray.push(location[i][1]);
-}
-for (let i = 0; i < location.length; i++) {
-    yArray.push(location[i][0]);
-}
-var latMin = Math.min(...xArray);
-var latMax = Math.max(...xArray);
-var lngMin = Math.min(...yArray);
-var lngMax = Math.max(...yArray);
-pointMid.lat = ((latMax + latMin) / 2);
-pointMid.lng = ((lngMax + lngMin) / 2);
-radius = haversineFormula(latMin, lngMin, latMax, lngMax);
+      function initMap(location) {
 
-// Display centered map
-var mapDiv = document.getElementById('map');
-var mapOptions = {
-    center: pointMid,
-    zoom: 12
-};
-var map = new google.maps.Map(mapDiv, mapOptions);
+        // Calculate neighborhood latitude/longitude max & min, center point, and radius
+        var pointMid = {};
+        var xArray = [];
+        var yArray = [];
+        for (let i = 0; i < location.length; i++) {
+          xArray.push(location[i][1]);
+        }
+        for (let i = 0; i < location.length; i++) {
+          yArray.push(location[i][0]);
+        }
+        var latMin = Math.min(...xArray);
+        var latMax = Math.max(...xArray);
+        var lngMin = Math.min(...yArray);
+        var lngMax = Math.max(...yArray);
+        pointMid.lat = ((latMax + latMin) / 2);
+        pointMid.lng = ((lngMax + lngMin) / 2);
+        radius = haversineFormula(latMin, lngMin, latMax, lngMax);
 
-// Display neighborhood boundary on the map 
-var boundary = [];
-for (let i = 0; i < location.length; i++) {
-    // Pass each point of the polygon to bounds
-    var coordinates = location[i];
-    var latitude = coordinates[1];
-    var longitude = coordinates[0];
-    boundary.push(new google.maps.LatLng(latitude, longitude));
-}
-var polylineOptions = {
-    path: boundary,
-    strokeColor: "#ADD8E6",
-    strokeWeight: 2.5
-};
-var polyline = new google.maps.Polyline(polylineOptions);
-polyline.setMap(map);
+        // Display centered map
+        var mapDiv = document.getElementById('map');
+        var mapOptions = {
+          center: pointMid,
+          zoom: 12
+        };
+        var map = new google.maps.Map(mapDiv, mapOptions);
 
-// // Fit map to neighborhood bounds
-// var bounds = new google.maps.LatLngBounds();
-// for (var i = 0; i < location.length; i++) {
-//     bounds.extend(location[i].getPosition());
-// }
-// map.fitBounds(bounds);
-};
+        // Display neighborhood boundary on the map 
+        var boundary = [];
+        for (let i = 0; i < location.length; i++) {
+          // Pass each point of the polygon to bounds
+          var coordinates = location[i];
+          var latitude = coordinates[1];
+          var longitude = coordinates[0];
+          boundary.push(new google.maps.LatLng(latitude, longitude));
+        }
+        var polylineOptions = {
+          path: boundary,
+          strokeColor: "#ADD8E6",
+          strokeWeight: 2.5
+        };
+        var polyline = new google.maps.Polyline(polylineOptions);
+        polyline.setMap(map);
 
-function haversineFormula(lat1, lon1, lat2, lon2) {
+        // // Fit map to neighborhood bounds
+        // var bounds = new google.maps.LatLngBounds();
+        // for (var i = 0; i < location.length; i++) {
+        //     bounds.extend(location[i].getPosition());
+        // }
+        // map.fitBounds(bounds);
+      };
+
+      function haversineFormula(lat1, lon1, lat2, lon2) {
         var R = 6371; // Radius of the earth in km
         var dLat = (lat2 - lat1) * (Math.PI / 180);  // Convert from degrees to radians
         var dLon = (lon2 - lon1) * (Math.PI / 180);
         var a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2)
-            ;
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+          Math.sin(dLon / 2) * Math.sin(dLon / 2)
+          ;
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = (R * c) * 1000; // Distance in m
         return d;
-    }
-  });
-</script>
+      }
+    });
+  </script>
 
- </body>
- 
- </html>
+</body>
+
+</html>
