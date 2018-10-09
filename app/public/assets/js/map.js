@@ -60,12 +60,22 @@ $(document).ready(function () {
         }).then(function (res) {
             location = res.simple_shape.coordinates[0][0];
             initMap(location);
-        }).then((res) => {
+        }).then(() => {
+            console.log("hello");
             $.get("/api/crimes/neighborhoods/" + neighborhoodInput, (response) => {
+                console.log(response);
+                sessionStorage.setItem("response", response)
             })
         })
     });
 
+    $("#chose").click(function(data){
+        window.location.replace(`../mainmapresults`);
+       });
+
+    $("#goHome").click(function(data){
+        window.location.replace("../mainpage1");
+       });
     $("#chooseLocation").on("submit", function (event) {
 
         event.preventDefault();
