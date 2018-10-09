@@ -1,21 +1,50 @@
 $(document).ready(function () {
 
+    // Receive data from session storage
+    var neighborhoodNames = JSON.parse(sessionStorage.getItem("neighborhoodNames"));
+    var neighborhoodInput = sessionStorage.getItem("neighborhoodInput");
+
+    // Define global variables
     const key = "AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA";
-    var neighborhoodLinks = [];
-    var neighborhoodNames = [];
+    var location;
     var pointMid = {};
     var radius;
-    var location;
     var placeResults = [];
 
-    // Receive neighborhood names from LA Times API
+    // Check for click events on the navbar burger icon
+    $(".navbar-menu").click(function () {
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        // $(".navbar-link").toggleClass("is-active");
+        $(".navbar-item.about").toggleClass("is-active")
+        $(".navbar-item.safety").toggleClass("is-active");
+        $(".navbar-item.disclaimer").toggleClass("is-active");
+    });
+
+    $.ajax({
+      url: "/api/crimes/neighborhoods/" + neighborhoodInput,
+      method: "GET"
+    }).then(function (data) {
+      $(".neighborhoodName").text(neighborhoodInput + " Rating")
+      $(".rating").text("rating: " + data[0].rating)
+      $(".totalCrimes").text("total crime: " + data[0].totalCrimes)
+      $(".kidnap").text("kidnap: " + data[0].kidnap)
+      $(".violent").text("violence: " + data[0].violent)
+      $(".property").text("property: " + data[0].property)
+      $(".trespass").text("trespass: " + data[0].trespass)
+      $(".lighting").text("lighting: " + data[0].lighting)
+      $(".clean").text("cleanliness: " + data[0].clean)
+      $(".population").text("population: " + data[0].population)
+    })
+
+    // Receive neighborhood API links from LA Times
     $.ajax({
         url: "https://cors-anywhere.herokuapp.com/http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive/1.0/boundary-set/la-county-neighborhoods-v6.json",
         method: "GET"
     }).then(function (res) {
 
+        var neighborhoodLinks = [];
         var paths = res.boundaries;
-        console.log(paths);
 
         // Populate array of API links
         for (let i = 0; i < paths.length; i++) {
@@ -25,63 +54,35 @@ $(document).ready(function () {
             neighborhoodLinks.push(baseURL + path);
         }
 
-        // Populate array of neighborhood names
-        for (let i = 0; i < paths.length; i++) {
-            var path = paths[i];
-            var neighborhood = path.slice(14, -27).replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase());
-            neighborhoodNames.push(neighborhood);
-        }
-
-        // Populate neighborhoods into the dropdown
-        for (let i = 0; i < neighborhoodNames.length; i++) {
-            var option = $("<option>");
-            option.text(neighborhoodNames[i]).val(neighborhoodNames[i]);
-            $("select").append(option);
-        }
-    });
-
-    $("#chooseNeighborhood").on("submit", function (event) {
-
-        event.preventDefault();
-        var neighborhoodInput = $("#options").val();
-        console.log("Neighborhood: " + neighborhoodInput);
         var urlIndex = neighborhoodNames.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
-        sessionStorage.setItem("neighborhood", neighborhoodInput);
         console.log("URL: " + url);
 
-
         // Get the coordinates defining the chosen neighborhood
-        // $.ajax({
-        //     url: "https://cors-anywhere.herokuapp.com/" + url,
-        //     method: "GET"
-        // }).then(function (res) {
-        //     location = res.simple_shape.coordinates[0][0];
-        //     sessionStorage.setItem("neighborhoodCoordinates", JSON.stringify(location));
-        //     initMap(location);
-        //     console.log(location);
-        // })
+        $.ajax({
+            url: "https://cors-anywhere.herokuapp.com/" + url,
+            method: "GET"
+        }).then(function (res) {
+            location = res.simple_shape.coordinates[0][0];
+            console.log(location);
+            initMap(location);
+        })
+
     });
 
-    $("#chose").click(function (data) {
-        window.location.replace(`../mainmapresults`);
-    });
-
-    $("#goHome").click(function (data) {
-        window.location.replace("../mainpage1");
-    });
-    $("#chooseLocation").on("submit", function (event) {
+    // Search for a location with Google Places API
+    $("#searchLocation").on("submit", function (event) {
 
         event.preventDefault();
         var input = $("#search").val();
         console.log(input);
+        console.log("radius: " + radius);
 
         $.ajax({
             url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pointMid.lat + "," + pointMid.lng + "&radius=" + radius + "&type=establishment&keyword=" + input + "&key=" + key,
             method: "GET"
         }).then(function (res) {
 
-            console.log(res)
             var results = res.results;
             for (let i = 0; i < results.length; i++) {
                 var result = results[i];
@@ -91,7 +92,6 @@ $(document).ready(function () {
                 placeResults.push(new Place(name, place_id, coordinates));
             };
             console.log(placeResults);
-            console.log(res);
             initMarkers(placeResults);
         }).then((res) => {
             $.get("/api/surveys/", (res) => {
@@ -100,7 +100,7 @@ $(document).ready(function () {
         });
     });
 
-    // Initialize Map
+    // Initialize map
     function initMap(location) {
 
         // Calculate neighborhood latitude/longitude max & min, center point, and radius
@@ -153,14 +153,7 @@ $(document).ready(function () {
         // map.fitBounds(bounds);
     };
 
-    function Place(name, place_id) {
-        this.name = name,
-        this.place_id = place_id
-
-            sessionStorage.setItem("businessName", this.name);
-            sessionStorage.setItem("uniqueID", this.place_id);
-    };
-
+    // Initialize map with markers
     function initMarkers(placeResults) {
 
         // Display centered map
@@ -215,16 +208,29 @@ $(document).ready(function () {
             Math.sin(dLon / 2) * Math.sin(dLon / 2)
             ;
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        var d = (R * c) * 1000; // Distance in m
+        var d = ((R * c) * 1000) / 2; // Average radius in m 
         return d;
     }
-    //$('select').formSelect();
+
+    // Constructor function for place results
+    function Place(name, place_id, coordinates) {
+        this.name = name,
+            this.place_id = place_id,
+            this.coordinates = coordinates
+
+            sessionStorage.setItem("businessName", this.name);
+            sessionStorage.setItem("uniqueID", this.place_id);
+    };
+
+    $("#goHome").click(function (data) {
+        window.location.replace("../mainpage1");
+    });
 
     // based on the form for survey submission
     $("").on("submit", function (event) {
 
-    $.post(`/neighborhoods/${input}`, (response) => {
-        console.log(response);
-    })
+        $.post(`/neighborhoods/${input}`, (response) => {
+            console.log(response);
+        })
     });
 });
