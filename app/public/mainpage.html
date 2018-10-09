@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -28,7 +28,6 @@
         crossorigin="anonymous"></script>
 
     <!-- -----------------JAVASCRIPT ----------------------------->
-    <script defer src="./assets/js/test.js"></script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
 
@@ -41,84 +40,93 @@
 
 <body>
 
-  <!-- ---------CONTAINER ------------ ----------- -->
+    <!-- ---------CONTAINER ------------ ----------- -->
 
-  <div class="app-container">
-
-
-  <!-- ------------------NAV BAR -------------------------- -->
-    <header class="app-header">
-      <nav class="navbar is-fixed-top">
-        <div class="container">
-
-<!-------------------------------------------- -->
-
-          <div class="navbar-brand">
-          <div class="navbar-item">
-            <a class="brand">
-              <div class="brand-content">
-                <div class="brand-title">Lighthouse</div>
-            </div>
-          </a>
-        </div>
-
-  <!-- -------------NAVBAR BURGER BURGER ------------- -->
-
-            <div class="navbar-burger burger" data-target="mainNav">
-              <span></span>
-              <span></span>
-              <span></span> 
-              </div> 
-         </div>
+    <div class="app-container">
 
 
-<!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
+        <!-- ------------------NAV BAR -------------------------- -->
+        <header class="app-header">
+            <nav class="navbar is-fixed-top">
+                <div class="container">
 
-          <div class ="navbar-menu" id="mainNav">
-              <div class="navbar-end">
-                <a class="navbar-item is-active">About</a>
-                <a class="navbar-item">Safety Rating</a>
-                <a class="navbar-item">Disclaimer</a>
+                    <!-------------------------------------------- -->
+
+                    <div class="navbar-brand">
+                        <div class="navbar-item">
+                            <a class="brand">
+                                <div class="brand-content">
+                                    <div class="brand-title">Lighthouse</div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- -------------NAVBAR BURGER BURGER ------------- -->
+
+                        <div class="navbar-burger burger" data-target="mainNav">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
 
 
+                    <!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
 
-   
-   <!-- ---------_NAV BAR END -------------------- -->
-   
-          </div>
-        </div>
+                    <div class="navbar-menu" id="mainNav">
+                        <div class="navbar-end">
+                            <a class="navbar-item is-active">About</a>
+                            <a class="navbar-item">Safety Rating</a>
+                            <a class="navbar-item">Disclaimer</a>
 
 
 
-        </nav>   
+
+                            <!-- ---------_NAV BAR END -------------------- -->
+
+                        </div>
+                    </div>
+
+
+
+            </nav>
         </header>
 
-  <!--------------APP CONTENT ----------- -->
+        <!--------------APP CONTENT ----------- -->
 
-  <main class="app-content">
-  <section class="hero is-link is-fullheight is-light">
-     <div class="hero-body">
-    <div class="container"></div>
+        <main class="app-content">
+            <section class="hero is-link is-fullheight is-light">
+                <div class="hero-body">
+                    <div class="container"></div>
 
-  
- 
-<!-- -----------LEFT COLUMN ------------------ -->
 
-<div class="column is-half" id="theLeft">
 
-        <form id="chooseNeighborhood">
-            <select id='options'>
-                <option id="option-value"></option>
-            </select>
-            <label>Choose a neighborhood</label>
-            
-            <input href="/mainmapresults" type="submit" id="submitPage" value="Submit">
-            </form>
-            <div id="map"></div>
-          
-        </div>
 
-    <!-- <div class="columns is-6">
+                    <!-- -----------LEFT COLUMN ------------------ -->
+
+                    <div class="column is-half" id="theLeft">
+
+                        <form id="chooseNeighborhood">
+                            <select id='options'>
+                                <option id="option-value"></option>
+                            </select>
+                            <label>Choose a neighborhood</label>
+
+
+                            <input href="/mainmapresults" type="submit" value="Submit">
+                        </form>
+
+                        <!--- DEEEEELEEETEEE THIS!!!!!!!!!!!!!!!-->
+                        <form id="chooseLocation">
+                            <input type="text" id="search">
+                            <input type="submit" value="Submit">
+                        </form>
+
+                        <div id="map"></div>
+
+                    </div>
+
+                    <!-- <div class="columns is-6">
 
           <form>
               <select id='options'>
@@ -134,9 +142,9 @@
 
 
 
-<!------------------ RIGHT COLUMN ------------------------------ -->
+                    <!------------------ RIGHT COLUMN ------------------------------ -->
 
-        <!-- <div class="column is-6">
+                    <!-- <div class="column is-6">
 
 
 
@@ -144,18 +152,18 @@
         </div> -->
 
 
-<!-------------APP CONTENT END -------------------- -->
+                    <!-------------APP CONTENT END -------------------- -->
 
-   </div>
+                </div>
 
-  </section>
+            </section>
 
-   <!-------------CONTAINER END ------ ------------->
+            <!-------------CONTAINER END ------ ------------->
 
-  </main>
+        </main>
 
-  </div>
+    </div>
 
- </body>
- 
- </html>
+</body>
+
+</html>
