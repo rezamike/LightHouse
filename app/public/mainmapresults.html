@@ -121,7 +121,7 @@
               <div class="card">
                 <header class="card-header">
                   <p class="card-header-title">
-                    Neighborhood Rating
+                    <div class="neighborhoodName"></div>
                   </p>
                 </header>
                 <div class="card-content">
@@ -164,6 +164,7 @@
         url: "/api/crimes/neighborhoods/" + neighborhood,
         method: "GET"
       }).then(function (data) {
+        $(".neighborhoodName").text(neighborhood + " Rating")
         $(".rating").text("rating: " + data[0].rating)
         $(".totalCrimes").text("total crime: " + data[0].totalCrimes)
         $(".kidnap").text("kidnap: " + data[0].kidnap)
