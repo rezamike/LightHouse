@@ -218,9 +218,20 @@ $(document).ready(function () {
     };
 
     $(".survButton").click(function () {
-        var balls = $(".answer6").val()
+        var businessName = sessionStorage.getItem("businessName");
+        var uniqueID = sessionStorage.getItem("uniqueID");
+        var a1 = $("#a1").val();
+        var a2 = $("#a2").val();
+        var a3 = $("#a3").val();
+        var a4 = $("#a4").val();
+        var a5 = $("#a5").val();
+        var security = $("#security").val();
+        var textBox = $("#textBox").val();
+        var timeDay = $("#timeday").val();
 
-        console.log(balls)
+        var data = {businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay};
+
+        console.log(data)
     });
 
     // Haversine formula to calculate distance in meters from 2 coordinates
