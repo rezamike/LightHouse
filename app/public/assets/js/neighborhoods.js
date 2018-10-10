@@ -44,7 +44,7 @@ $(document).ready(function () {
         sessionStorage.setItem("neighborhoodInput", neighborhoodInput);
     });
 
-    $("#chose").click(function (data) {
+    $(".nextPage").click(function (data) {
         window.location.replace(`../mainmapresults`);
     });
 
