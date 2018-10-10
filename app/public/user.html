@@ -23,6 +23,7 @@
   <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
 
   <!-------------- CSS -------------------------------------->
+
   <link rel="stylesheet" href="./assets/css/style.css">
 
   <!---------------------JQUERY---------------------- -->
@@ -31,6 +32,7 @@
     crossorigin="anonymous"></script>
 
   <!-- -----------------JAVASCRIPT ----------------------------->
+  <!-- <script defer src="./assets/js/test.js"></script> -->
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
 
@@ -43,7 +45,7 @@
 
 <body>
 
-  <!-- ---------CONTAINER ------------ ----------- --> 
+  <!-- ---------CONTAINER ------------ ----------- -->
 
   <div class="app-container">
 
@@ -98,67 +100,100 @@
     <!--------------APP CONTENT ----------- -->
 
     <main class="app-content">
-      <section class="section is-hero">
+      <section class="hero is-fullheight">
 
         <div class="container">
 
-          <!--------------COLUMNS -------------- -->
-
-          <div class="columns">
-
-            <!-------------- LEFT COLUMN WITH SEARCH BAR & reSULT MAP ------ -->
-
-            <div class="colum is-half" id="theLeft">
-              <div id="map"></div>
-            </div>
 
 
-            <!------------------ RIGHT COLUMN ------------------------------ -->
 
-            <div class="column is-half" id="theRight">
-              <form id="searchLocation">
-                <div class="Carrie">PUT THINGY HERE (for carrie)</div>
-                <input class="input" type="text" id="search" placeholder="Business or Address">
-                <input id="chose" type="submit" value="Submit">
-                <!-- <a class="button" type="submit" value="Submit">Search</a> -->
-              </form>
-              <div class="card">
-                <header class="card-header">
-                  <p class="card-header-title">
-                    <div class="neighborhoodName"></div>
-                  </p>
-                </header>
+          <!-- -----------LEFT COLUMN ------------------ -->
+
+          <div class="column is-half" id="theLeft">
+
+            <div class="columns is-6">
+
+              <div class="card" id="left-card">
+                <header class="card-header"> </header>
                 <div class="card-content">
                   <div class="content">
 
-                    <!-- /api/crimes/neighborhoods/:neighborhood -->
-                    <div class="rating"></div>
-                    <div class="totalCrimes"></div>
-                    <div class="kidnap"></div>
-                    <div class="violent"></div>
-                    <div class="property"></div>
-                    <div class="trespass"></div>
-                    <div class="lighting"></div>
-                    <div class="clean"></div>
-                    <div class="population"></div>
-                    <br>
+                    <div class=>
+
+                      <div class=>
+
+                        <div class=>
+
+
+
+
+                        </div>
+
+                      </div>
+
+
+
+                    </div>
                   </div>
                 </div>
 
               </div>
+
+
+
             </div>
+
           </div>
 
+          <!------------------ RIGHT COLUMN ------------------------------ -->
+
+          <div class="column is-half" id="theLeft">
+
+              <div class="columns is-6">
+  
+                <div class="card" id="right-card">
+                  <header class="card-header"> </header>
+                  <div class="card-content">
+                    <div class="content">
+  
+                      <div class=>
+  
+                        <div class=>
+  
+                          <div class=>
+  
+  
+  
+  
+                          </div>
+  
+                        </div>
+  
+  
+  
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+  
+  
+  
+              </div>
+  
+            </div>
+  
 
           <!-------------APP CONTENT END -------------------- -->
-
         </div>
 
-      </section>
+  </div>
 
-      <!-------------CONTAINER END ------ ------------->
+  </section>
 
-    </main>
+  <!-------------CONTAINER END ------ ------------->
+
+  </main>
 
   </div>
 

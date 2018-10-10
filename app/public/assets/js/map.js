@@ -58,6 +58,9 @@ $(document).ready(function () {
         var url = neighborhoodLinks[urlIndex];
         console.log("URL: " + url);
 
+
+
+
         // Get the coordinates defining the chosen neighborhood
         $.ajax({
             url: "https://cors-anywhere.herokuapp.com/" + url,
