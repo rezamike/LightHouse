@@ -89,6 +89,7 @@ $(document).ready(function () {
                 var name = result.name;
                 var place_id = result.place_id;
                 var coordinates = result.geometry.location;
+                $(placeResults).addClass("balls");
                 placeResults.push(new Place(name, place_id, coordinates));
             };
             console.log(placeResults);
@@ -183,8 +184,9 @@ $(document).ready(function () {
 
         // Create markers for place search results
         var markers = [];
+        var balls = "balls"
         for (let i = 0; i < placeResults.length; i++) {
-            var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
+            var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id});
             markers.push(marker);
         }
         console.log(markers);
@@ -217,9 +219,6 @@ $(document).ready(function () {
         this.name = name,
             this.place_id = place_id,
             this.coordinates = coordinates
-
-        sessionStorage.setItem("businessName", this.name);
-        sessionStorage.setItem("uniqueID", this.place_id);
     };
 
     $("#goHome").click(function (data) {
@@ -227,10 +226,10 @@ $(document).ready(function () {
     });
 
     // based on the form for survey submission
-    $("").on("submit", function (event) {
+    // $("").on("submit", function (event) {
 
-        $.post(`/neighborhoods/${input}`, (response) => {
-            console.log(response);
-        })
-    });
+    //     $.post(`/neighborhoods/${input}`, (response) => {
+    //         console.log(response);
+    //     })
+    // });
 });
