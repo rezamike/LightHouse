@@ -98,9 +98,9 @@ $(document).ready(function () {
             initMarkers(placeResults);
         }).then((res) => {
             $.get("/api/surveys/", (res) => {
-
             })
         });
+        return false;
     });
 
     // Initialize map
@@ -124,7 +124,7 @@ $(document).ready(function () {
         radius = haversineFormula(latMin, lngMin, latMax, lngMax);
 
         // Display centered map
-        var mapDiv = document.getElementsById('map');
+        var mapDiv = document.getElementById('map');
         var mapOptions = {
             center: pointMid,
             zoom: 12
@@ -188,6 +188,9 @@ $(document).ready(function () {
         var markers = [];
         for (let i = 0; i < placeResults.length; i++) {
             var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
+            marker.addListener('click', () => {
+                console.log(this);
+            })
             markers.push(marker);
         }
         console.log(markers);
