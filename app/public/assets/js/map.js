@@ -35,7 +35,7 @@ $(document).ready(function () {
         $(".lighting").text("lighting: " + data[0].lighting)
         $(".clean").text("cleanliness: " + data[0].clean)
         $(".population").text("population: " + data[0].population)
-    })
+    });
 
     // Receive neighborhood API links from LA Times
     $.ajax({
@@ -58,10 +58,7 @@ $(document).ready(function () {
         var url = neighborhoodLinks[urlIndex];
         console.log("URL: " + url);
 
-
-
-
-        // Get the coordinates defining the chosen neighborhood
+        // Get the coordinates defining the chosen neighborhood and initialize map
         $.ajax({
             url: "https://cors-anywhere.herokuapp.com/" + url,
             method: "GET"
@@ -73,7 +70,7 @@ $(document).ready(function () {
 
     });
 
-    // Search for a location with Google Places API
+    // Search for a location with Google Places API and initialize markers
     $("#searchLocation").on("submit", function (event) {
 
         event.preventDefault();
@@ -92,6 +89,7 @@ $(document).ready(function () {
                 var name = result.name;
                 var place_id = result.place_id;
                 var coordinates = result.geometry.location;
+                $(placeResults).addClass("balls");
                 placeResults.push(new Place(name, place_id, coordinates));
             };
             console.log(placeResults);
@@ -188,8 +186,11 @@ $(document).ready(function () {
         var markers = [];
         for (let i = 0; i < placeResults.length; i++) {
             var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
-            marker.addListener('click', () => {
-                console.log(this);
+
+            marker.addListener('click', function () {
+                // for (placeResults[i].place)
+                console.log(placeResults[i].place_id);
+
             })
             markers.push(marker);
         }
@@ -223,9 +224,6 @@ $(document).ready(function () {
         this.name = name,
             this.place_id = place_id,
             this.coordinates = coordinates
-
-        sessionStorage.setItem("businessName", this.name);
-        sessionStorage.setItem("uniqueID", this.place_id);
     };
 
     $("#goHome").click(function (data) {
@@ -233,10 +231,10 @@ $(document).ready(function () {
     });
 
     // based on the form for survey submission
-    $("").on("submit", function (event) {
+    // $("").on("submit", function (event) {
 
-        $.post(`/neighborhoods/${input}`, (response) => {
-            console.log(response);
-        })
-    });
+    //     $.post(`/neighborhoods/${input}`, (response) => {
+    //         console.log(response);
+    //     })
+    // });
 });

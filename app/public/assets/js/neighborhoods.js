@@ -44,9 +44,11 @@ $(document).ready(function () {
         sessionStorage.setItem("neighborhoodInput", neighborhoodInput);
     });
 
-    // $("#chose").click(function (data) {
-    //     window.location.replace(`../mainmapresults`);
-    // });
+
+    $(".nextPage").click(function (data) {
+        window.location.replace(`../mainmapresults`);
+    });
+
 
     $("#goHome").click(function (data) {
         window.location.replace("../mainpage1");
