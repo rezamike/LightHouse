@@ -190,6 +190,10 @@ $(document).ready(function () {
         var balls = "balls"
         for (let i = 0; i < placeResults.length; i++) {
             var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id});
+            marker.addListener('click', function () {
+                console.log(this)
+            })
+
             markers.push(marker);
         }
         console.log(markers);
