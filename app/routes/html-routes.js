@@ -6,6 +6,7 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../public/mainpage1.html"));
     });
 
+    
     app.get("/:query", function (req, res) {
         switch (req.params.query) {
             case "mainmapresults":

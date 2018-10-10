@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
 
     <!-------------- CSS -------------------------------------->
-    
+
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <!---------------------JQUERY---------------------- -->
@@ -32,12 +32,18 @@
         crossorigin="anonymous"></script>
 
     <!-- -----------------JAVASCRIPT ----------------------------->
-    <!-- <script defer src="./assets/js/test.js"></script> -->
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
 
+    <script defer src="assets/js/map.js"></script>
 
     <script defer src="assets/js/neighborhoods.js"></script>
+  
+    <script defer src="assets/js/links.js"></script>
+
+<!-- ------------------------------------------------------------------ -->
+
+
 
     <html class="has-navbar-fixed-top index">
 
@@ -76,19 +82,58 @@
          </div>
 
 
-<!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
+<!-- ----------------NAV BAR ITEMS WITH DROP DOWN --------- -->
 
           <div class ="navbar-menu" id="mainNav">
               <div class="navbar-end">
-                <a class="navbar-item is-active" id="about">About</a>
-                <a class="navbar-item" id="safetyRating">Safety Rating</a>
-                <a class="navbar-item" id="disclaimer">Disclaimer</a>
+                
+                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                  <div class="navbar-item has-dropdown is-hoverable">
 
+                <a class="navbar-link is is-active" id="about">
+                    About
+                </a>
+                <div class="navbar-dropdown">
+                  <a class="navbar-item about">
+                   ABOUT INFO 
+                  </a>
+                </div>
+              </div>
 
+                <div class="navbar-item has-dropdown is-hoverable is-mega">
+
+                    <a class="navbar-link">
+                      Safety Rating 
+                    </a>
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item safety">
+                       SAFETY INFO 
+                      </a>
+                    </div>
+                  </div> 
+
+    
+
+                <div class="navbar-item has-dropdown is-hoverable is-mega">
+
+                    <a class="navbar-link">
+                     Disclaimer
+                    </a>
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item disclaimer">
+                      Disclaimer Info
+                      </a>
+                    </div>
+                  </div> 
+
+             
+     
 
    
    <!-- ---------_NAV BAR END -------------------- -->
-   
+          
+          </nav>
+          </div>
           </div>
         </div>
 
@@ -100,9 +145,17 @@
   <!--------------APP CONTENT ----------- -->
 
   <main class="app-content">
-  <section class="hero is-link is-fullheight is-light">
+
+
+  <section class="hero is-fullheight video">
+    <div class="hero-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XmBi1XeiqGg?&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;start=31&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;control=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
      <div class="hero-body">
-    <div class="container">
+        <div class="container">
+
+          
+      
 
   
  
@@ -147,9 +200,13 @@
 
 
 <!-------------APP CONTENT END -------------------- -->
+      </div>
+
     </div>
 
    </div>
+
+  </div>
 
   </section>
 

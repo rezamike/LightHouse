@@ -1,6 +1,15 @@
 
 .hero-body {
-    background: url("../images/lighthouse2.png");
+    /* background: url("../images/lighthouse2.png"); */
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+}
+
+.is-hero{
+    /* background-color: white; */
+    background: url("../images/sunray\ 4.png");
     background-position: center center; 
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -9,38 +18,62 @@
 
 .brand-title {
     color: navy; 
-    font: bold; 
+    font-weight: bold; 
+}
+
+.navbar-link {
+    color: navy;
+    font-weight: bold;
+}
+ 
+#map {
+    height: 700px;
+    width: 500px;
+    border-width: 3px !important; 
+    box-shadow: 1px 2px 3px navy !important;  
+}
+
+.Carrie {
+    color: navy;
+}
+
+#options {
+    border-color: navy !important; 
+    border-width: 3px !important; 
+}
+
+#search {
+    border-color: grey !important; 
+    border-width: 3px !important; 
+    box-shadow: 1px 2px 3px navy; 
+}
+
+#rightCard {
+    border-color: navy !important; 
+    border-width: 3px !important; 
+}
+
+#left-card {
+     background-color: black; 
+}
+
+#right-card {
+    background-color: black; 
 }
 
 #about {
     color: navy
 }
 
-#safetyRating {
-    color: navy
+#aboutCard {
+    background: transparent; 
+    font: white; 
 }
-
-#disclaimer {
-    color: navy; 
-}
-
-#map {
-    height: 700px;
-    width: 500px;
-}
-
-  #options {
-      color: black;
-  }
-
-  #location-input {
-      color: pink; 
-  }
 
 #theRight {
     margin-left: 25px;
 }
 
-#theLeft {
+#theLeft { 
    
 }

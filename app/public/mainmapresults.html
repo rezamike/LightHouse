@@ -34,8 +34,12 @@
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
 
-
   <script defer src="assets/js/map.js"></script>
+
+  <script defer src="assets/js/neighborhoods.js"></script>
+
+  <!-- --------------------------------------------------------- -->
+
 
   <html class="has-navbar-fixed-top index">
 
@@ -43,62 +47,100 @@
 
 <body>
 
-  <!-- ---------CONTAINER ------------ ----------- -->
+  <!-- ---------CONTAINER ------------ ----------- --> 
 
   <div class="app-container">
 
 
-    <!-- ------------------NAV BAR -------------------------- -->
-    <header class="app-header">
-      <nav class="navbar is-fixed-top">
-        <div class="container">
+ <!-- ------------------NAV BAR -------------------------- -->
+ <header class="app-header">
+    <nav class="navbar is-fixed-top">
+      <div class="container">
 
-          <!-------------------------------------------- -->
+<!-------------------------------------------- -->
 
-          <div class="navbar-brand">
-            <div class="navbar-item">
-              <a class="brand">
-                <div class="brand-content">
-                  <div class="brand-title">Lighthouse</div>
-                </div>
-              </a>
-            </div>
-
-            <!-- -------------NAVBAR BURGER BURGER ------------- -->
-
-            <div class="navbar-burger burger" data-target="mainNav">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+        <div class="navbar-brand">
+        <div class="navbar-item">
+          <a class="brand">
+            <div class="brand-content">
+              <div class="brand-title">Lighthouse</div>
           </div>
+        </a>
+      </div>
+
+<!-- -------------NAVBAR BURGER BURGER ------------- -->
+
+          <div class="navbar-burger burger" data-target="mainNav">
+            <span></span>
+            <span></span>
+            <span></span> 
+            </div> 
+       </div>
 
 
-          <!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
+<!-- ----------------NAV BAR ITEMS WITH DROP DOWN --------- -->
 
-          <div class="navbar-menu" id="mainNav">
+        <div class ="navbar-menu" id="mainNav">
             <div class="navbar-end">
-              <a class="navbar-item is-active" id="about">About</a>
-              <a class="navbar-item" id="safetyRating">Safety Rating</a>
-              <a class="navbar-item" id="disclaimer">Disclaimer</a>
+              
+              <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                <div class="navbar-item has-dropdown is-hoverable">
 
-
-
-
-              <!-- ---------_NAV BAR END -------------------- -->
-
+              <a class="navbar-link is is-active" id="about">
+                  About
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item about">
+                 ABOUT INFO 
+                </a>
+              </div>
             </div>
-          </div>
+
+              <div class="navbar-item has-dropdown is-hoverable is-mega">
+
+                  <a class="navbar-link">
+                    Safety Rating 
+                  </a>
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item safety">
+                     SAFETY INFO 
+                    </a>
+                  </div>
+                </div> 
+
+  
+
+              <div class="navbar-item has-dropdown is-hoverable is-mega">
+
+                  <a class="navbar-link">
+                   Disclaimer
+                  </a>
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item disclaimer">
+                    Disclaimer Info
+                    </a>
+                  </div>
+                </div> 
+
+           
+   
+
+ 
+ <!-- ---------_NAV BAR END -------------------- -->
+        
+        </nav>
+        </div>
+        </div>
+      </div>
 
 
 
-      </nav>
-    </header>
-
+      </nav>   
+      </header>
     <!--------------APP CONTENT ----------- -->
 
     <main class="app-content">
-      <section class="section is-hero">
+      <section class="section is-hero is hero-background">
 
         <div class="container">
 
@@ -109,20 +151,21 @@
             <!-------------- LEFT COLUMN WITH SEARCH BAR & reSULT MAP ------ -->
 
             <div class="colum is-half" id="theLeft">
+              <!-- <div class="map"> -->
               <div id="map"></div>
-            </div>
-
+            <!-- </div> -->
+          </div>
 
             <!------------------ RIGHT COLUMN ------------------------------ -->
 
             <div class="column is-half" id="theRight">
               <form id="searchLocation">
-                <div class="Carrie">PUT THINGY HERE (for carrie)</div>
+                <div class="Carrie">Search for location, food type or interest</div>
                 <input class="input" type="text" id="search" placeholder="Business or Address">
                 <input type="submit" value="Submit">
                 <!-- <a class="button" type="submit" value="Submit">Search</a> -->
               </form>
-              <div class="card">
+              <div class="card" id="rightCard">
                 <header class="card-header">
                   <p class="card-header-title">
                     <div class="neighborhoodName"></div>
@@ -147,7 +190,7 @@
 
               </div>
             </div>
-          </div>
+         
 
 
           <!-------------APP CONTENT END -------------------- -->
