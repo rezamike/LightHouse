@@ -96,9 +96,9 @@ $(document).ready(function () {
             initMarkers(placeResults);
         }).then((res) => {
             $.get("/api/surveys/", (res) => {
-
             })
         });
+        return false;
     });
 
     // Initialize map

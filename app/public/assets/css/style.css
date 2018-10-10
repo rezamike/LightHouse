@@ -8,29 +8,39 @@
 }
 
 .is-hero{
-    /* background-color: white; */
-    background: url("../images/sunray\ 4.png");
+    background: url("../images/sunray.png");
     background-position: center center; 
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover; 
 }
 
+video#bgvideo {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto;
+    z-index: -100;
+    background: no-repeat;
+    background-size: cover;
+}
+
 .brand-title {
-    color: navy; 
+    color: slategrey ; 
     font-weight: bold; 
 }
 
 .navbar-link {
-    color: navy;
+    color: slategrey;
     font-weight: bold;
 }
  
 #map {
     height: 700px;
-    width: 500px;
-    /* border-width: 3px !important; 
-    box-shadow: 1px 2px 3px navy !important;   */
+    width: 500px; 
+    border: 3px solid grey !important; 
+    box-shadow: 1px 2px 3px navy;
 }
 
 .Carrie {
@@ -38,9 +48,39 @@
 }
 
 #options {
-    border-color: navy !important; 
+    border-color: slategrey !important; 
     border-width: 3px !important; 
 }
+
+.full {
+    /* position: absolute;
+    top: 25px;
+    right: 16px; */
+    padding-top: 10px;
+    margin-top: 450px; 
+    text-align: right; 
+    color: white; 
+    text-shadow: slategrey; 
+    font-weight: bolder; 
+    border-width: 4px !important;  
+    background-color: slategrey; 
+    opacity: 0.7; 
+    border-radius: 12px;
+    width: 500px; 
+    height: 50px; 
+
+}
+
+.container {
+    display: flex;
+    justify-content: center; 
+
+}
+
+#theLeft {
+    /* background-color: white;  */
+}
+
 
 #search {
     border-color: grey !important; 
@@ -49,8 +89,8 @@
 }
 
 #rightCard {
-    border-color: navy !important; 
-    border-width: 3px !important; 
+    border: 3px solid grey !important; 
+    box-shadow: 1px 2px 3px navy;
 }
 
 #left-card {
@@ -62,7 +102,7 @@
 }
 
 #about {
-    color: navy
+    color: slategrey;
 }
 
 #aboutCard {
@@ -74,6 +114,3 @@
     margin-left: 25px;
 }
 
-#theLeft { 
-   
-}
