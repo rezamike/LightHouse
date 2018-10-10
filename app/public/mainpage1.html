@@ -38,9 +38,10 @@
     <script defer src="assets/js/map.js"></script>
 
     <script defer src="assets/js/neighborhoods.js"></script>
-  
 
-<!-- ------------------------------------------------------------------ -->
+
+
+<!-- ----------------------------------------------------------------
 
 
 
@@ -50,12 +51,12 @@
 
 <body>
 
-  <!-- ---------CONTAINER ------------ ----------- -->
+  ---------CONTAINER ------------ -----------
 
   <div class="app-container">
 
 
-  <!-- ------------------NAV BAR -------------------------- -->
+  ------------------NAV BAR -------------------------- -->
     <header class="app-header">
       <nav class="navbar is-fixed-top">
         <div class="container">
@@ -148,24 +149,23 @@
 
   <section class="hero is-fullheight video">
     <div class="hero-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/XmBi1XeiqGg?&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;start=31&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;control=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
+      <video id="bgvideo" playsinline autoplay muted loop>
+        <source src="assets/images/lighthouse.mp4" type="video/mp4">
+      </video>
      <div class="hero-body">
         <div class="container">
 
-          
-      
-
+        
   
  
 <!-- -----------LEFT COLUMN ------------------ -->
 
-<div class="column is-half" id="theLeft">
+<div class="full" >
         <form id="chooseNeighborhood">
             <select id='options'>
                 <option id="option-value"></option>
             </select>
-            <label>Choose a neighborhood</label>
+            <label id="label">Choose a neighborhood</label>
             
             <input id="chose" class="nextPage" type="submit" value="Submit">
             </form>

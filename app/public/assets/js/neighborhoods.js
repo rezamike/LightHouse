@@ -33,7 +33,7 @@ $(document).ready(function () {
         for (let i = 0; i < neighborhoodNames.length; i++) {
             var option = $("<option>");
             option.text(neighborhoodNames[i]).val(neighborhoodNames[i]);
-            $("select").append(option);
+            $("#options").append(option);
         }
     });
 
@@ -44,9 +44,11 @@ $(document).ready(function () {
         sessionStorage.setItem("neighborhoodInput", neighborhoodInput);
     });
 
+
     $(".nextPage").click(function (data) {
         window.location.replace(`../mainmapresults`);
     });
+
 
     $("#goHome").click(function (data) {
         window.location.replace("../mainpage1");
