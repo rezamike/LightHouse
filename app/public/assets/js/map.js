@@ -186,9 +186,18 @@ $(document).ready(function () {
         var markers = [];
         for (let i = 0; i < placeResults.length; i++) {
             var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
+
             marker.addListener('click', function () {
                 // for (placeResults[i].place)
                 console.log(placeResults[i].place_id);
+
+                var businessName = placeResults[i].name;
+                var uniqueID = placeResults[i].place_id;
+
+                sessionStorage.setItem("businessName", businessName);
+                sessionStorage.setItem("uniqueID", uniqueID);
+
+                $(".modal").addClass("is-active");
             })
             markers.push(marker);
         }
@@ -201,6 +210,12 @@ $(document).ready(function () {
         }
         map.fitBounds(bounds);
     };
+
+    $(".survButton").click(function () {
+        var balls = $(".answer6").val()
+
+        console.log(balls)
+    });
 
     // Haversine formula to calculate distance in meters from 2 coordinates
     function haversineFormula(lat1, lon1, lat2, lon2) {

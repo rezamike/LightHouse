@@ -30,6 +30,8 @@ module.exports = function (app) {
 
   app.post("/api/surveys", function (req, res) {
     console.log(req.body);
+
+    
     db.Survey.create({
       businessName: req.body.businessName,
       uniqueID: req.body.uniqueID,
