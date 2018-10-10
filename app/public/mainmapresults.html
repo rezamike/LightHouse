@@ -52,91 +52,91 @@
   <div class="app-container">
 
 
- <!-- ------------------NAV BAR -------------------------- -->
- <header class="app-header">
-    <nav class="navbar is-fixed-top">
-      <div class="container">
+    <!-- ------------------NAV BAR -------------------------- -->
+    <header class="app-header">
+      <nav class="navbar is-fixed-top">
+        <div class="container">
 
-<!-------------------------------------------- -->
+          <!-------------------------------------------- -->
 
-        <div class="navbar-brand">
-        <div class="navbar-item">
-          <a class="brand">
-            <div class="brand-content">
-              <div class="brand-title">Lighthouse</div>
+          <div class="navbar-brand">
+            <div class="navbar-item">
+              <a class="brand">
+                <div class="brand-content">
+                  <div class="brand-title">Lighthouse</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- -------------NAVBAR BURGER BURGER ------------- -->
+
+            <div class="navbar-burger burger" data-target="mainNav">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </div>
-        </a>
-      </div>
-
-<!-- -------------NAVBAR BURGER BURGER ------------- -->
-
-          <div class="navbar-burger burger" data-target="mainNav">
-            <span></span>
-            <span></span>
-            <span></span> 
-            </div> 
-       </div>
 
 
-<!-- ----------------NAV BAR ITEMS WITH DROP DOWN --------- -->
+          <!-- ----------------NAV BAR ITEMS WITH DROP DOWN --------- -->
 
-        <div class ="navbar-menu" id="mainNav">
+          <div class="navbar-menu" id="mainNav">
             <div class="navbar-end">
-              
+
               <nav class="navbar" role="navigation" aria-label="dropdown navigation">
                 <div class="navbar-item has-dropdown is-hoverable">
 
-              <a class="navbar-link is is-active" id="about">
-                  About
-              </a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item about">
-                 ABOUT INFO 
-                </a>
-              </div>
-            </div>
+                  <a class="navbar-link is is-active" id="about">
+                    About
+                  </a>
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item about">
+                      ABOUT INFO
+                    </a>
+                  </div>
+                </div>
 
-              <div class="navbar-item has-dropdown is-hoverable is-mega">
+                <div class="navbar-item has-dropdown is-hoverable is-mega">
 
                   <a class="navbar-link">
-                    Safety Rating 
+                    Safety Rating
                   </a>
                   <div class="navbar-dropdown">
                     <a class="navbar-item safety">
-                     SAFETY INFO 
+                      SAFETY INFO
                     </a>
                   </div>
-                </div> 
+                </div>
 
-  
 
-              <div class="navbar-item has-dropdown is-hoverable is-mega">
+
+                <div class="navbar-item has-dropdown is-hoverable is-mega">
 
                   <a class="navbar-link">
-                   Disclaimer
+                    Disclaimer
                   </a>
                   <div class="navbar-dropdown">
                     <a class="navbar-item disclaimer">
-                    Disclaimer Info
+                      Disclaimer Info
                     </a>
                   </div>
-                </div> 
+                </div>
 
-           
-   
 
- 
- <!-- ---------_NAV BAR END -------------------- -->
-        
-        </nav>
+
+
+
+                <!-- ---------_NAV BAR END -------------------- -->
+
+              </nav>
+            </div>
+          </div>
         </div>
-        </div>
-      </div>
 
 
 
-      </nav>   
-      </header>
+      </nav>
+    </header>
     <!--------------APP CONTENT ----------- -->
 
     <main class="app-content">
@@ -153,8 +153,8 @@
             <div class="colum is-half" id="theLeft">
               <!-- <div class="map"> -->
               <div id="map"></div>
-            <!-- </div> -->
-          </div>
+              <!-- </div> -->
+            </div>
 
             <!------------------ RIGHT COLUMN ------------------------------ -->
 
@@ -190,14 +190,100 @@
 
               </div>
             </div>
-         
 
 
-          <!-------------APP CONTENT END -------------------- -->
 
-        </div>
+            <!-------------APP CONTENT END -------------------- -->
+
+          </div>
 
       </section>
+
+      <div class="container" id="app">
+        <div class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Card
+                </p>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
+
+
+                  <div class="selectSurvey">
+                    <select>
+                      <option>Select dropdown</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+                  <div class="selectSurvey">
+                    <select>
+                      <option>Select dropdown</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+                  <div class="selectSurvey">
+                    <select>
+                      <option>Select dropdown</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+                  <div class="selectSurvey">
+                    <select>
+                      <option>Select dropdown</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+                  <div class="selectSurvey">
+                    <select>
+                      <option>Select dropdown</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+                  <div class="selectSurvey">
+                    <select>
+                      <option>Select dropdown</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+                  <div class="selectSurvey">
+                    <select>
+                      <option>Select dropdown</option>
+                      <option>With options</option>
+                    </select>
+                  </div>
+
+                  <br>
+
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+          <button class="modal-close"></button>
+        </div>
+
+        <br /><br /><br />
+        <p>
+          <button class="button" id="showModal">Show</button>
+        </p>
+      </div>
+
+      <script>
+        $("#showModal").click(function () {
+          $(".modal").addClass("is-active");
+        });
+
+        $(".modal-close").click(function () {
+          $(".modal").removeClass("is-active");
+        });
+      </script>
 
       <!-------------CONTAINER END ------ ------------->
 
