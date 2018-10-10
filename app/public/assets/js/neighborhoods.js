@@ -33,7 +33,7 @@ $(document).ready(function () {
         for (let i = 0; i < neighborhoodNames.length; i++) {
             var option = $("<option>");
             option.text(neighborhoodNames[i]).val(neighborhoodNames[i]);
-            $("select").append(option);
+            $("#options").append(option);
         }
     });
 
