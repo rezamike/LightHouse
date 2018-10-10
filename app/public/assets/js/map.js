@@ -96,8 +96,9 @@ $(document).ready(function () {
         }).then((res) => {
             $.get("/api/surveys/", (res) => {
 
-            })
+            });
         });
+        return false;
     });
 
     // Initialize map
@@ -135,11 +136,15 @@ $(document).ready(function () {
             var coordinates = location[i];
             var latitude = coordinates[1];
             var longitude = coordinates[0];
-            boundary.push(new google.maps.LatLng(latitude, longitude));
+            boundary.push(new google.maps.LatLng({latitude, longitude}));
+
+            
+            //var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
+
         }
         var polylineOptions = {
             path: boundary,
-            strokeColor: "#ADD8E6",
+            strokeColor: "#000080",
             strokeWeight: 2.5
         };
         var polyline = new google.maps.Polyline(polylineOptions);
@@ -183,15 +188,13 @@ $(document).ready(function () {
         var polyline = new google.maps.Polyline(polylineOptions);
         polyline.setMap(map);
 
-
         var markers = [];
         // Create markers for place search results
         for (let i = 0; i < placeResults.length; i++) {
             var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
             marker.addListener('click', function () {
                 console.log(this)
-            })
-
+            });
             markers.push(marker);
         }
         console.log(markers);
