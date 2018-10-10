@@ -1,40 +1,51 @@
 $(document).ready(function () {
 
+    // Receive data from session storage
+    var neighborhoodNames = JSON.parse(sessionStorage.getItem("neighborhoodNames"));
+    var neighborhoodInput = sessionStorage.getItem("neighborhoodInput");
+
+    // Define global variables
     const key = "AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA";
-    var neighborhoodInput;
-    var input;
-    var neighborhoodLinks = [];
-    var neighborhoods = [];
-    var places = [];
-    var south;
-    var west;
-    var east;
-    var north;
-    var pointMid = {};
     var location;
+    var pointMid = {};
+    var radius;
+    var placeResults = [];
 
-        // Check for click events on the navbar burger icon
-    $(".navbar-menu").click(function() {
-      
-            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-            // $(".navbar-link").toggleClass("is-active");
-            $(".navbar-item.about").toggleClass("is-active")
-            $(".navbar-item.safety").toggleClass("is-active");
-            $(".navbar-item.disclaimer").toggleClass("is-active");
-      
-        });
-     
+    // Check for click events on the navbar burger icon
+    $(".navbar-menu").click(function () {
 
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        // $(".navbar-link").toggleClass("is-active");
+        $(".navbar-item.about").toggleClass("is-active")
+        $(".navbar-item.safety").toggleClass("is-active");
+        $(".navbar-item.disclaimer").toggleClass("is-active");
+    });
 
+    $.ajax({
+        url: "/api/crimes/neighborhoods/" + neighborhoodInput,
+        method: "GET"
+    }).then(function (data) {
+        $(".neighborhoodName").text(neighborhoodInput + " Rating")
+        $(".rating").text("rating: " + data[0].rating)
+        $(".totalCrimes").text("total crime: " + data[0].totalCrimes)
+        $(".kidnap").text("kidnap: " + data[0].kidnap)
+        $(".violent").text("violence: " + data[0].violent)
+        $(".property").text("property: " + data[0].property)
+        $(".trespass").text("trespass: " + data[0].trespass)
+        $(".lighting").text("lighting: " + data[0].lighting)
+        $(".clean").text("cleanliness: " + data[0].clean)
+        $(".population").text("population: " + data[0].population)
+    })
 
-    // Receive neighborhood names from LA Times API
+    // Receive neighborhood API links from LA Times
     $.ajax({
         url: "https://cors-anywhere.herokuapp.com/http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive/1.0/boundary-set/la-county-neighborhoods-v6.json",
         method: "GET"
     }).then(function (res) {
 
+        var neighborhoodLinks = [];
         var paths = res.boundaries;
-        console.log(paths);
+
         // Populate array of API links
         for (let i = 0; i < paths.length; i++) {
             var path = paths[i];
@@ -43,28 +54,7 @@ $(document).ready(function () {
             neighborhoodLinks.push(baseURL + path);
         }
 
-        // Populate array of neighborhood names
-        for (let i = 0; i < paths.length; i++) {
-            var path = paths[i];
-            var neighborhood = path.slice(14, -27).replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase());
-            neighborhoods.push(neighborhood);
-        }
-
-        // Populate neighborhoods into the dropdown
-        for (let i = 0; i < neighborhoods.length; i++) {
-            var option = $("<option>");
-            option.text(neighborhoods[i]).val(neighborhoods[i]);
-            $("select").append(option);
-        }
-    });
-
-
-    $("#chooseNeighborhood").on("submit", function (event) {
-
-        event.preventDefault();
-        neighborhoodInput = $("#options").val();
-        console.log("Neighborhood: " + neighborhoodInput);
-        var urlIndex = neighborhoods.indexOf(neighborhoodInput);
+        var urlIndex = neighborhoodNames.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
         console.log("URL: " + url);
 
@@ -77,45 +67,35 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (res) {
             location = res.simple_shape.coordinates[0][0];
+            console.log(location);
             initMap(location);
-        }).then((res) => {
-            $.get("/api/crimes/neighborhoods/" + neighborhoodInput, (response) => {
-            })
         })
+
     });
 
-    $("#chooseLocation").on("submit", function (event) {
+    // Search for a location with Google Places API
+    $("#searchLocation").on("submit", function (event) {
 
         event.preventDefault();
-        // var lat = (((Math.abs(north) + Math.abs(south)) / 2) * 111.32);
-        // var lng = (((Math.abs(east) + Math.abs(west)) / 2) * 40075 * Math.cos(lat));
-        // var radius = ((lat + lng) / 2) * 1000;
-        // console.log(radius)
-        var radius = 3000;
-        input = $("#search").val();
+        var input = $("#search").val();
         console.log(input);
+        console.log("radius: " + radius);
 
         $.ajax({
-            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pointMid.lat + "," + pointMid.lng + "&rankby=distance&type=establishment&keyword=" + input + "&key=" + key,
+            url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + pointMid.lat + "," + pointMid.lng + "&radius=" + radius + "&type=establishment&keyword=" + input + "&key=" + key,
             method: "GET"
         }).then(function (res) {
 
-            console.log(res)
             var results = res.results;
             for (let i = 0; i < results.length; i++) {
                 var result = results[i];
                 var name = result.name;
                 var place_id = result.place_id;
                 var coordinates = result.geometry.location;
-                places.push(new Place(name, place_id, coordinates));
+                placeResults.push(new Place(name, place_id, coordinates));
             };
-            console.log(places);
-            console.log(res);
-            initMarkers(places);
-        }).then((res) => {
-            $.post(`/neighborhoods/${input}`, (response) => {
-                console.log(response);
-            })
+            console.log(placeResults);
+            initMarkers(placeResults);
         }).then((res) => {
             $.get("/api/surveys/", (res) => {
 
@@ -123,9 +103,10 @@ $(document).ready(function () {
         });
     });
 
-    // Initialize Map
+    // Initialize map
     function initMap(location) {
-        // Find neighborhood max, min, and center points
+
+        // Calculate neighborhood latitude/longitude max & min, center point, and radius
         var xArray = [];
         var yArray = [];
         for (let i = 0; i < location.length; i++) {
@@ -134,12 +115,13 @@ $(document).ready(function () {
         for (let i = 0; i < location.length; i++) {
             yArray.push(location[i][0]);
         }
-        west = Math.min(...xArray);
-        east = Math.max(...xArray);
-        south = Math.min(...yArray);
-        north = Math.max(...yArray);
-        pointMid.lat = ((east + west) / 2);
-        pointMid.lng = ((north + south) / 2);
+        var latMin = Math.min(...xArray);
+        var latMax = Math.max(...xArray);
+        var lngMin = Math.min(...yArray);
+        var lngMax = Math.max(...yArray);
+        pointMid.lat = ((latMax + latMin) / 2);
+        pointMid.lng = ((lngMax + lngMin) / 2);
+        radius = haversineFormula(latMin, lngMin, latMax, lngMax);
 
         // Display centered map
         var mapDiv = document.getElementById('map');
@@ -174,13 +156,8 @@ $(document).ready(function () {
         // map.fitBounds(bounds);
     };
 
-    function Place(name, place_id, coordinates) {
-        this.name = name,
-            this.place_id = place_id,
-            this.coordinates = coordinates
-    };
-
-    function initMarkers(places) {
+    // Initialize map with markers
+    function initMarkers(placeResults) {
 
         // Display centered map
         var mapDiv = document.getElementById('map');
@@ -209,8 +186,8 @@ $(document).ready(function () {
 
         // Create markers for place search results
         var markers = [];
-        for (let i = 0; i < places.length; i++) {
-            var marker = new google.maps.Marker({ position: places[i].coordinates, map: map, id: places[i].place_id });
+        for (let i = 0; i < placeResults.length; i++) {
+            var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
             markers.push(marker);
         }
         console.log(markers);
@@ -223,5 +200,40 @@ $(document).ready(function () {
         map.fitBounds(bounds);
     };
 
-    //$('select').formSelect();
+    // Haversine formula to calculate distance in meters from 2 coordinates
+    function haversineFormula(lat1, lon1, lat2, lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = (lat2 - lat1) * (Math.PI / 180);  // Convert from degrees to radians
+        var dLon = (lon2 - lon1) * (Math.PI / 180);
+        var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2)
+            ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = ((R * c) * 1000) / 2; // Average radius in m 
+        return d;
+    }
+
+    // Constructor function for place results
+    function Place(name, place_id, coordinates) {
+        this.name = name,
+            this.place_id = place_id,
+            this.coordinates = coordinates
+
+        sessionStorage.setItem("businessName", this.name);
+        sessionStorage.setItem("uniqueID", this.place_id);
+    };
+
+    $("#goHome").click(function (data) {
+        window.location.replace("../mainpage1");
+    });
+
+    // based on the form for survey submission
+    $("").on("submit", function (event) {
+
+        $.post(`/neighborhoods/${input}`, (response) => {
+            console.log(response);
+        })
+    });
 });

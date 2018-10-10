@@ -24,38 +24,30 @@ module.exports = function (app) {
       }
     })
       .then(function (dbCrime) {
-
-        //?
         res.json(dbCrime);
       });
   });
 
-  //  !!!!!!!!!   FINSIH    // POST route for saving a new post
   app.post("/api/surveys", function (req, res) {
     console.log(req.body);
     db.Survey.create({
-      neighborhood: req.body.neighborhood,
-      body: req.body.body,
-      category: req.body.category
+      businessName: req.body.businessName,
+      uniqueID: req.body.uniqueID,
+      a1: req.body.a1,
+      a2: req.body.a2,
+      a3: req.body.a3,
+      a4: req.body.a4,
+      a5: req.body.a5,
+      security: req.body.security,
+      textBox: req.body.textBox,
+      timeDay: req.body.timeDay
     })
       .then(function (dbSurvey) {
         res.json(dbSurvey);
       });
   });
 
-  //   // DELETE route for deleting posts
-  //   app.delete("/api/posts/:id", function(req, res) {
-  //     db.Post.destroy({
-  //       where: {
-  //         id: req.params.id
-  //       }
-  //     })
-  //       .then(function(dbPost) {
-  //         res.json(dbPost);
-  //       });
-  //   });
-
-  //   // PUT route for updating posts
+  //   // PUT route for updating surveys?
   //   app.put("/api/posts", function(req, res) {
   //     db.Post.update(req.body,
   //       {

@@ -15,4 +15,5 @@ module.exports = function (app) {
             default: res.sendFile(path.join(__dirname, "../public/404.html"));
         };
     });
+
 };
