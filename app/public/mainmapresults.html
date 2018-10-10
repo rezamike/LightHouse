@@ -160,8 +160,8 @@
 
             <div class="column is-half" id="theRight">
               <form id="searchLocation">
-                <div class="Carrie">Search for location, food type or interest</div>
-                <input class="input" type="text" id="search" placeholder="Business or Address">
+                <!-- <div class="Carrie">Search for location, food type or interest</div> -->
+                <input class="input" type="text" id="search" placeholder="Enter address, location or interest">
                 <input type="submit" value="Submit">
                 <!-- <a class="button" type="submit" value="Submit">Search</a> -->
               </form>
@@ -214,50 +214,138 @@
                 <div class="content">
 
 
+                    How will you rate the atmosphere of this establishment?
+                    <br>
                   <div class="select Asurvey">
-                    <select>
+                    <select id="a1">
                       <option>Select dropdown</option>
-                      <option>With options</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
                     </select>
                   </div>
-                  <div class="select Asurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="select Asurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="select Asurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="select Asurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="select Asurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="select Asurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-
                   <br>
+                  <br>
+
+                  How will you rate the outside environment of this establishment?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="a2">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  How comfortable did you feel visiting this establishment?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="a3">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  How safe did you feel at this establishment?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="a4">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  What is the crowd size of this place?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="a5">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+                  
+                  Is there Security on the premises?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="security">
+                      <option>Select dropdown</option>
+                      <option value="true">Yes</option>
+                      <option value="false">No</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+                  
+                  What is the time of day?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="timeday">
+                      <option>Select dropdown</option>
+                      <option>Morning</option>
+                      <option>Afternoon</option>
+                      <option>Night</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  Any other comments?
+                  <br>
+                  <textarea id="textBox" class="textarea" placeholder="e.g. Hello world"></textarea>
+                  <br>
+                  <br>
+
+                  <a class="button is-light survButton">Submit</a>
 
                 </div>
               </div>
@@ -271,7 +359,6 @@
 
         <br /><br /><br />
         <p>
-          <button class="button" id="showModal">Show</button>
         </p>
       </div>
 
