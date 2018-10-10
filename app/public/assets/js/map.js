@@ -136,7 +136,7 @@ $(document).ready(function () {
             var coordinates = location[i];
             var latitude = coordinates[1];
             var longitude = coordinates[0];
-            boundary.push(new google.maps.LatLng({latitude, longitude}));
+            boundary.push(new google.maps.LatLng(latitude, longitude));
 
             
             //var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
@@ -182,7 +182,7 @@ $(document).ready(function () {
         }
         var polylineOptions = {
             path: boundary,
-            strokeColor: "#ADD8E6",
+            strokeColor: "#000080",
             strokeWeight: 2.5
         };
         var polyline = new google.maps.Polyline(polylineOptions);
