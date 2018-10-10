@@ -32,12 +32,18 @@
         crossorigin="anonymous"></script>
 
     <!-- -----------------JAVASCRIPT ----------------------------->
-    <!-- <script defer src="./assets/js/test.js"></script> -->
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
 
+    <script defer src="assets/js/map.js"></script>
 
     <script defer src="assets/js/neighborhoods.js"></script>
+  
+    <script defer src="assets/js/links.js"></script>
+
+<!-- ------------------------------------------------------------------ -->
+
+
 
     <html class="has-navbar-fixed-top index">
 
@@ -84,7 +90,7 @@
                 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
                   <div class="navbar-item has-dropdown is-hoverable">
 
-                <a class="navbar-link">
+                <a class="navbar-link is is-active" id="about">
                     About
                 </a>
                 <div class="navbar-dropdown">
@@ -94,7 +100,7 @@
                 </div>
               </div>
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-item has-dropdown is-hoverable is-mega">
 
                     <a class="navbar-link">
                       Safety Rating 
@@ -108,7 +114,7 @@
 
     
 
-                <div class="navbar-item has-dropdown is-active">
+                <div class="navbar-item has-dropdown is-hoverable is-mega">
 
                     <a class="navbar-link">
                      Disclaimer
@@ -139,9 +145,17 @@
   <!--------------APP CONTENT ----------- -->
 
   <main class="app-content">
-  <section class="hero is-link is-fullheight is-light">
+
+
+  <section class="hero is-fullheight video">
+    <div class="hero-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XmBi1XeiqGg?&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;start=31&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;control=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
      <div class="hero-body">
-    <div class="container">
+        <div class="container">
+
+          
+      
 
   
  
@@ -186,9 +200,13 @@
 
 
 <!-------------APP CONTENT END -------------------- -->
+      </div>
+
     </div>
 
    </div>
+
+  </div>
 
   </section>
 

@@ -124,7 +124,7 @@ $(document).ready(function () {
         radius = haversineFormula(latMin, lngMin, latMax, lngMax);
 
         // Display centered map
-        var mapDiv = document.getElementById('map');
+        var mapDiv = document.getElementsById('map');
         var mapOptions = {
             center: pointMid,
             zoom: 12
