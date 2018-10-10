@@ -188,7 +188,7 @@ $(document).ready(function () {
             var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
             marker.addListener('click', function () {
                 // for (placeResults[i].place)
-                // console.log(placeResults[i]);
+                console.log(placeResults[i].place_id);
             })
             markers.push(marker);
         }
