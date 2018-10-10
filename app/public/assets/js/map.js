@@ -9,7 +9,6 @@ $(document).ready(function () {
     var location;
     var pointMid = {};
     var radius;
-    var placeResults = [];
 
     // Check for click events on the navbar burger icon
     $(".navbar-menu").click(function () {
@@ -74,6 +73,7 @@ $(document).ready(function () {
     $("#searchLocation").on("submit", function (event) {
 
         event.preventDefault();
+        var placeResults = [];
         var input = $("#search").val();
         console.log(input);
         console.log("radius: " + radius);
@@ -89,7 +89,6 @@ $(document).ready(function () {
                 var name = result.name;
                 var place_id = result.place_id;
                 var coordinates = result.geometry.location;
-                $(placeResults).addClass("balls");
                 placeResults.push(new Place(name, place_id, coordinates));
             };
             console.log(placeResults);
@@ -146,10 +145,12 @@ $(document).ready(function () {
         var polyline = new google.maps.Polyline(polylineOptions);
         polyline.setMap(map);
 
+        console.log(boundary)
+
         // // Fit map to neighborhood bounds
         // var bounds = new google.maps.LatLngBounds();
-        // for (var i = 0; i < location.length; i++) {
-        //     bounds.extend(location[i].getPosition());
+        // for (var i = 0; i < boundary.length; i++) {
+        //     bounds.extend(boundary[i].getPosition());
         // }
         // map.fitBounds(bounds);
     };
@@ -182,8 +183,9 @@ $(document).ready(function () {
         var polyline = new google.maps.Polyline(polylineOptions);
         polyline.setMap(map);
 
-        // Create markers for place search results
+
         var markers = [];
+        // Create markers for place search results
         for (let i = 0; i < placeResults.length; i++) {
             var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
             marker.addListener('click', function () {
