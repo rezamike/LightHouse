@@ -7,40 +7,51 @@
     background-size: cover; 
 }
 
+.hero {
+    background-color: white;
+}
+
 .brand-title {
     color: navy; 
-    font: bold; 
+    font-weight: bold; 
 }
 
-#about {
-    color: navy
+.navbar-link {
+    color: navy;
+    font-weight: bold;
 }
-
-#safetyRating {
-    color: navy
-}
-
-#disclaimer {
-    color: navy; 
-}
-
+ 
 #map {
     height: 700px;
     width: 500px;
 }
 
-  #options {
-      color: black;
-  }
+#left-card {
+     background-color: black; 
+}
 
-  #location-input {
-      color: pink; 
-  }
+#right-card {
+    background-color: black; 
+}
+
+#hero-background {
+    background: url("../images/sunray.png");
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover; 
+
+}
+
+#aboutCard {
+    background: transparent; 
+    font: white; 
+}
 
 #theRight {
     margin-left: 25px;
 }
 
-#theLeft {
+#theLeft { 
    
 }

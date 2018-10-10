@@ -13,6 +13,20 @@ $(document).ready(function () {
     var pointMid = {};
     var location;
 
+        // Check for click events on the navbar burger icon
+    $(".navbar-menu").click(function() {
+      
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            // $(".navbar-link").toggleClass("is-active");
+            $(".navbar-item.about").toggleClass("is-active")
+            $(".navbar-item.safety").toggleClass("is-active");
+            $(".navbar-item.disclaimer").toggleClass("is-active");
+      
+        });
+     
+
+
+
     // Receive neighborhood names from LA Times API
     $.ajax({
         url: "https://cors-anywhere.herokuapp.com/http://s3-us-west-2.amazonaws.com/boundaries.latimes.com/archive/1.0/boundary-set/la-county-neighborhoods-v6.json",
@@ -44,6 +58,7 @@ $(document).ready(function () {
         }
     });
 
+
     $("#chooseNeighborhood").on("submit", function (event) {
 
         event.preventDefault();
@@ -52,6 +67,9 @@ $(document).ready(function () {
         var urlIndex = neighborhoods.indexOf(neighborhoodInput);
         var url = neighborhoodLinks[urlIndex];
         console.log("URL: " + url);
+
+
+
 
         // Get the coordinates defining the chosen neighborhood
         $.ajax({

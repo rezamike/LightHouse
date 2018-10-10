@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
 
     <!-------------- CSS -------------------------------------->
-    
+
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <!---------------------JQUERY---------------------- -->
@@ -76,19 +76,58 @@
          </div>
 
 
-<!-- ----------------NAV BAR ITEMS / NO DROP DOWN --------- -->
+<!-- ----------------NAV BAR ITEMS WITH DROP DOWN --------- -->
 
           <div class ="navbar-menu" id="mainNav">
               <div class="navbar-end">
-                <a class="navbar-item is-active" id="about">About</a>
-                <a class="navbar-item" id="safetyRating">Safety Rating</a>
-                <a class="navbar-item" id="disclaimer">Disclaimer</a>
+                
+                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                  <div class="navbar-item has-dropdown is-hoverable">
 
+                <a class="navbar-link">
+                    About
+                </a>
+                <div class="navbar-dropdown">
+                  <a class="navbar-item about">
+                   ABOUT INFO 
+                  </a>
+                </div>
+              </div>
 
+                <div class="navbar-item has-dropdown is-hoverable">
+
+                    <a class="navbar-link">
+                      Safety Rating 
+                    </a>
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item safety">
+                       SAFETY INFO 
+                      </a>
+                    </div>
+                  </div> 
+
+    
+
+                <div class="navbar-item has-dropdown is-active">
+
+                    <a class="navbar-link">
+                     Disclaimer
+                    </a>
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item disclaimer">
+                      Disclaimer Info
+                      </a>
+                    </div>
+                  </div> 
+
+             
+     
 
    
    <!-- ---------_NAV BAR END -------------------- -->
-   
+          
+          </nav>
+          </div>
           </div>
         </div>
 
