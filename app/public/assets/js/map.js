@@ -96,9 +96,9 @@ $(document).ready(function () {
             initMarkers(placeResults);
         }).then((res) => {
             $.get("/api/surveys/", (res) => {
-
             })
         });
+        return false;
     });
 
     // Initialize map
@@ -186,9 +186,11 @@ $(document).ready(function () {
         var markers = [];
         for (let i = 0; i < placeResults.length; i++) {
             var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
+
             marker.addListener('click', function () {
                 // for (placeResults[i].place)
                 console.log(placeResults[i].place_id);
+
             })
             markers.push(marker);
         }
