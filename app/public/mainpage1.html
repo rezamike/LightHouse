@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!---------------BULMA------------------------------------- -->
+  <!---------------BULMA------------------------------------- -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
 
-    <!-----------------BULMA AWESOME FONT  ------------------------- -->
+  <!-----------------BULMA AWESOME FONT  ------------------------- -->
 
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
-    <!-- ----------------------------JQUERY ----------------------------- -->
+  <!-- ----------------------------JQUERY ----------------------------- -->
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!----------------GOOGLE FONTS -------------------------------->
+  <!----------------GOOGLE FONTS -------------------------------->
 
-    <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
 
-    <!-------------- CSS -------------------------------------->
+  <!-------------- CSS -------------------------------------->
 
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
 
-    <!---------------------JQUERY---------------------- -->
+  <!---------------------JQUERY---------------------- -->
 
-    <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+  <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 
-    <!-- -----------------JAVASCRIPT ----------------------------->
+  <!-- -----------------JAVASCRIPT ----------------------------->
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrkRP7ynh5ARKO3jrv5zxc4q5AJkED0mA&" type="text/javascript"></script>
 
-    <script defer src="assets/js/map.js"></script>
+  <script defer src="assets/js/map.js"></script>
 
-    <script defer src="assets/js/neighborhoods.js"></script>
+  <script defer src="assets/js/neighborhoods.js"></script>
 
 
 
-<!-- ----------------------------------------------------------------
+  <!-- ----------------------------------------------------------------
 
 
 
@@ -57,122 +57,155 @@
 
 
   ------------------NAV BAR -------------------------- -->
-    <header class="app-header">
-      <nav class="navbar is-fixed-top">
-        <div class="container">
+  <header class="app-header">
+    <nav class="navbar is-fixed-top">
+      <div class="container">
 
-<!-------------------------------------------- -->
+        <!-------------------------------------------- -->
 
-          <div class="navbar-brand">
+        <div class="navbar-brand">
           <div class="navbar-item">
             <a class="brand">
               <div class="brand-content">
                 <div class="brand-title">Lighthouse</div>
-            </div>
-          </a>
+              </div>
+            </a>
+          </div>
+
+          <!-- -------------NAVBAR BURGER BURGER ------------- -->
+
+          <div class="navbar-burger burger" data-target="mainNav">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
 
-  <!-- -------------NAVBAR BURGER BURGER ------------- -->
 
-            <div class="navbar-burger burger" data-target="mainNav">
-              <span></span>
-              <span></span>
-              <span></span> 
-              </div> 
-         </div>
+        <!-- ----------------NAV BAR ITEMS WITH DROP DOWN --------- -->
 
+        <div class="navbar-menu" id="mainNav">
+          <div class="navbar-end">
 
-<!-- ----------------NAV BAR ITEMS WITH DROP DOWN --------- -->
-
-          <div class ="navbar-menu" id="mainNav">
-              <div class="navbar-end">
-                
-                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-                  <div class="navbar-item has-dropdown is-hoverable">
+            <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+              <div class="navbar-item has-dropdown is-hoverable">
 
                 <a class="navbar-link is is-active" id="about">
-                    About
+                  About
                 </a>
-                <div class="navbar-dropdown">
+                <div class="navbar-dropdown about">
                   <a class="navbar-item about">
-                   ABOUT INFO 
+                    lightHouse is a web application that provides an indentifiable
+                    <br>
+                    safe space for its users.
+                    <br>
+                    <br>
+                    lightHouse is a web application made by:
+                    <br>
+                    - Carrie Wiener
+                    <br>
+                    - John Belciglio
+                    <br>
+                    - Michael Reza Sanaiha
+                    <br>
+                    - Pauline-ann Bantayan
+                    <br>
+                    - Kevin Yang
+                    <br>
                   </a>
                 </div>
               </div>
 
-                <div class="navbar-item has-dropdown is-hoverable is-mega">
+              <div class="navbar-item has-dropdown is-hoverable is-mega">
 
-                    <a class="navbar-link">
-                      Safety Rating 
-                    </a>
-                    <div class="navbar-dropdown">
-                      <a class="navbar-item safety">
-                       SAFETY INFO 
-                      </a>
-                    </div>
-                  </div> 
+                <a class="navbar-link">
+                  Safety Rating
+                </a>
+                <div class="navbar-dropdown">
+                  <a class="navbar-item safety">
+                    Neighborhood rating provided by:
+                    <br>
+                    Los Angeles government database
+                    <br>
+                    <br>
+                    User rating provided by: 
+                    <br>
+                    users via user survey
+                  </a>
+                </div>
+              </div>
 
-    
 
-                <div class="navbar-item has-dropdown is-hoverable is-mega">
 
-                    <a class="navbar-link">
-                     Disclaimer
-                    </a>
-                    <div class="navbar-dropdown">
-                      <a class="navbar-item disclaimer">
-                      Disclaimer Info
-                      </a>
-                    </div>
-                  </div> 
+              <div class="navbar-item has-dropdown is-hoverable is-mega">
 
-             
-     
+                <a class="navbar-link">
+                  Disclaimer
+                </a>
+                <div class="navbar-dropdown is-right">
+                  <a class="navbar-item disclaimer">
+                    lightHouse is not responsible for any events that may transpire.
+                    <br>
+                    Information provided by lightHouse is inteneded to help users to
+                    <br>
+                    determine a safe space but should not be the sole source of
+                    <br>
+                    information. Users use information provided by lightHouse at his
+                    <br>
+                    or her own risk. Information is subject to change without notice
+                    <br>
+                    and may not be accurate or up-to-date. No suing.
+                  </a>
+                </div>
+              </div>
 
-   
-   <!-- ---------_NAV BAR END -------------------- -->
-          
-          </nav>
-          </div>
+
+
+
+
+              <!-- ---------_NAV BAR END -------------------- -->
+
+            </nav>
           </div>
         </div>
+      </div>
 
 
 
-        </nav>   
-        </header>
+    </nav>
+  </header>
 
   <!--------------APP CONTENT ----------- -->
 
   <main class="app-content">
 
 
-  <section class="hero is-fullheight video">
-    <div class="hero-video">
-      <video id="bgvideo" playsinline autoplay muted loop>
-        <source src="assets/images/lighthouse.mp4" type="video/mp4">
-      </video>
-     <div class="hero-body">
-        <div class="container">
+    <section class="hero is-fullheight video">
+      <div class="hero-video">
+        <video id="bgvideo" playsinline autoplay muted loop>
+          <source src="assets/images/lighthouse.mp4" type="video/mp4">
+        </video>
+        <div class="hero-body">
+          <div class="container">
 
-        
-  
- 
-<!-- -----------LEFT COLUMN ------------------ -->
 
-<div class="full" >
-        <form id="chooseNeighborhood">
-            <select id='options'>
-                <option id="option-value"></option>
-            </select>
-            <label id="label">Choose a neighborhood</label>
-            
-            <input id="chose" class="nextPage" type="submit" value="Submit">
-            </form>
 
-        </div>
 
-    <!-- <div class="columns is-6">
+            <!-- -----------LEFT COLUMN ------------------ -->
+
+            <div class="full">
+              <form id="chooseNeighborhood">
+                <select id='options'>
+                  <option id="option-value"></option>
+                </select>
+                <label id="label">Choose a neighborhood</label>
+
+                <input id="chose" class="nextPage" type="submit" value="Submit">
+              </form>
+
+            </div>
+
+            <!-- <div class="columns is-6">
 
           <form>
               <select id='options'>
@@ -188,9 +221,9 @@
 
 
 
-<!------------------ RIGHT COLUMN ------------------------------ -->
+            <!------------------ RIGHT COLUMN ------------------------------ -->
 
-        <!-- <div class="column is-6">
+            <!-- <div class="column is-6">
 
 
 
@@ -198,23 +231,23 @@
         </div> -->
 
 
-<!-------------APP CONTENT END -------------------- -->
+            <!-------------APP CONTENT END -------------------- -->
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
+      </div>
 
-   </div>
+    </section>
 
-  </div>
-
-  </section>
-
-   <!-------------CONTAINER END ------ ------------->
+    <!-------------CONTAINER END ------ ------------->
 
   </main>
 
   </div>
 
- </body>
- 
- </html>
+  </body>
+
+</html>
