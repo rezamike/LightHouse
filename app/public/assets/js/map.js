@@ -244,6 +244,7 @@ $(document).ready(function () {
                         for (let i = 0; i < response.length; i++) {
                             if (response[i].uniqueID === uniqueID) {
                                 $(".businessName").html(response[i].businessName);
+                                $(".time").html(response[i].timeDay);
 
                                 if (response.a1 <= 3) {
                                     $(".atmosphere").html("Calming");
@@ -293,6 +294,13 @@ $(document).ready(function () {
                                 }
                                 else if (response[i].a5 > 7) {
                                     $(".crowd").html("Very Crowded");
+                                }
+
+                                if (response.security === 0) {
+                                    $(".security").html("None")
+                                }
+                                else if (response.security === 1) {
+                                    $(".security").html("Security On-Site")
                                 }
                             }
                         }
