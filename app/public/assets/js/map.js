@@ -65,9 +65,8 @@ $(document).ready(function () {
             location = res.simple_shape.coordinates[0][0];
             console.log(location);
             initMap(location);
-        })
+        });
 
-    });
 
     // Search for a location with Google Places API and initialize markers
     $("#searchLocation").on("submit", function (event) {
