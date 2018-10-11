@@ -25,7 +25,7 @@ $(document).ready(function () {
         method: "GET"
     }).then(function (data) {
         $(".neighborhoodName").text(neighborhoodInput + " Rating")
-        $(".rating").text("Rating: " + data[0].rating)
+        $(".rating").text("Neighborhood Safety Rating:" + data[0].rating)
         $(".totalCrimes").text("Total Crime: " + data[0].totalCrimes)
         $(".kidnap").text("Kidnapping: " + data[0].kidnap)
         $(".violent").text("Violence: " + data[0].violent)
@@ -65,9 +65,8 @@ $(document).ready(function () {
             location = res.simple_shape.coordinates[0][0];
             console.log(location);
             initMap(location);
-        })
+        });
 
-    });
 
     // Search for a location with Google Places API and initialize markers
     $("#searchLocation").on("submit", function (event) {
@@ -101,10 +100,8 @@ $(document).ready(function () {
                 console.log(placeResults);
                 initMarkers(placeResults);
             }
-        }).then((res) => {
-            $.get("/api/surveys/", (res) => {
+        })
 
-            });
         });
         return false;
     });
@@ -211,7 +208,70 @@ $(document).ready(function () {
                 sessionStorage.setItem("businessName", businessName);
                 sessionStorage.setItem("uniqueID", uniqueID);
 
-                $(".modal").addClass("is-active");
+                $(".modal2").addClass("is-active");
+                if ($(".modal2").hasClass("is-active")) {
+                    $.ajax({
+                        url: "/api/surveys",
+                        method: "GET"
+                    }).then(function (response) {
+                        
+                        for (let i = 0; i < response.length; i++) {
+                            if (response[i].uniqueID === uniqueID) {
+                                $(".businessName").html(response[i].businessName);
+
+                                if (response.a1 <= 3) {
+                                    $(".atmosphere").html("Calming");
+                                }
+                                else if (response[i].a1 < 7) {
+                                    $(".atmosphere").html("Somewhat Distracting");
+                                }
+                                else if (response[i].a1 > 7) {
+                                    $(".atmosphere").html("Alarming");
+                                }
+
+                                if (response.a2 <= 3) {
+                                    $(".outside").html("Very Clean");
+                                }
+                                else if (response[i].a2 < 7) {
+                                    $(".outside").html("Somewhat Dirty");
+                                }
+                                else if (response[i].a2 > 7) {
+                                    $(".outside").html("Disgusting");
+                                }
+
+                                if (response.a3 <= 3) {
+                                    $(".comfort").html("Relaxing");
+                                }
+                                else if (response[i].a3 < 7) {
+                                    $(".comfort").html("Somewhat Discomforting");
+                                }
+                                else if (response[i].a3 > 7) {
+                                    $(".comfort").html("Uncomfortable");
+                                }
+
+                                if (response.a4 <= 3) {
+                                    $(".safety").html("Safe");
+                                }
+                                else if (response[i].a4 < 7) {
+                                    $(".safety").html("Somewhat Threatening");
+                                }
+                                else if (response[i].a4 > 7) {
+                                    $(".safety").html("Threatened");
+                                }
+
+                                if (response.a5 <= 3) {
+                                    $(".crowd").html("Sparse");
+                                }
+                                else if (response[i].a5 < 7) {
+                                    $(".crowd").html("Somewhat Busy");
+                                }
+                                else if (response[i].a5 > 7) {
+                                    $(".crowd").html("Very Crowded");
+                                }
+                            }
+                        }
+                    });
+                };
             });
             markers.push(marker);
         }
@@ -237,7 +297,7 @@ $(document).ready(function () {
         var textBox = $("#textBox").val();
         var timeDay = $("#timeday").val();
 
-        var data = {businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay};
+        var data = { businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay };
         console.log(data)
 
         $.ajax({
@@ -245,14 +305,8 @@ $(document).ready(function () {
             method: "POST",
             data: data
         });
-
-        $.ajax({
-            url: "/api/surveys",
-            method: "GET"
-        }).then(function(response) {
-            console.log(response);
-        });
     });
+
 
     // Haversine formula to calculate distance in meters from 2 coordinates
     function haversineFormula(lat1, lon1, lat2, lon2) {
