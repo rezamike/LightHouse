@@ -99,11 +99,16 @@ video#bgvideo {
 }
 
 #theLeft {
-   padding-top: 20%; 
+   padding-top: 8% !important;
+   margin-left: 5% !important;
 }
 
 #submitButton {
     font-size: 18px; 
+    float: right; 
+    border-color: grey !important; 
+    border-width: 1.5px !important; 
+    box-shadow: .5px 1px 2px navy; 
 }
 
 #search {
@@ -117,17 +122,18 @@ video#bgvideo {
     box-shadow: 1px 2px 3px navy;
     text-align: center;
     color: navy; 
-}
-
-#left-card {
-     background-color: black; 
-}
-
-#right-card {
-    background-color: black; 
+    opacity: 0.7;
 }
 
 #about {
+    color: slategrey;
+}
+
+#safetyRating {
+    color: slategrey;
+}
+
+#disclaimer {
     color: slategrey;
 }
 
@@ -137,14 +143,14 @@ video#bgvideo {
 }
 
 #theRight {
-    margin-left: 25px;
-    padding-top: 25%; 
-    padding-right: 20%; 
+    margin-left: 25px !important;
+    padding-top: 11% !important;
+    padding-right: 20% !important;
 }
 
 #modalCard {
     border: 3px solid grey !important; 
-    box-shadow: 1px 2px 3px navy !important;
+    box-shadow: 3px 4px 5px navy !important;
     color: navy; 
     background: white;
 }

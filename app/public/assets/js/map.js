@@ -25,7 +25,7 @@ $(document).ready(function () {
         method: "GET"
     }).then(function (data) {
         $(".neighborhoodName").text(neighborhoodInput + " Rating")
-        $(".rating").text("Rating: " + data[0].rating)
+        $(".rating").text("Neighborhood Safety Rating:" + data[0].rating)
         $(".totalCrimes").text("Total Crime: " + data[0].totalCrimes)
         $(".kidnap").text("Kidnapping: " + data[0].kidnap)
         $(".violent").text("Violence: " + data[0].violent)
