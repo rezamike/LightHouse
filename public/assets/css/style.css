@@ -142,7 +142,7 @@ video#bgvideo {
     color: slategrey;
 }
 
-#safetyRating {
+#safetyrating {
     color: slategrey;
 }
 
@@ -184,9 +184,9 @@ video#bgvideo {
     color: navy; 
 }
 
-.businessName {
+#busName {
     color: navy;
-    font-weight: bolder; 
+    font-weight: bolder;  
 }
 
 .card-header {
@@ -201,6 +201,39 @@ video#bgvideo {
     color: slategrey;
 }
 
+#a2 {
+    color: slategrey;
+}
+
+#a3 {
+    color: slategrey;
+}
+
+#a4 {
+    color: slategrey;
+}
+
+#a5 {
+    color: slategrey;
+}
+
+#security {
+    color: slategrey
+}
+
+#timeday {
+    color: slategrey;
+}
+
+#textBox {
+    color: slategrey;
+}
+
+#survButton {
+    border-color: grey !important; 
+    border-width: 3px !important; 
+    box-shadow: 1px 2px 3px navy; 
+}
 .popup {
     height: 125px;
     width:  250px;
