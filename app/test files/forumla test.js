@@ -25,5 +25,6 @@ function sumOfAll(array) {
     // console.log(sum);
     // returns the average of the array
     var average = sum / array.length;
+    return average;
     // console.log(average);
 };
