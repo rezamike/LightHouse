@@ -35,12 +35,29 @@ video#bgvideo {
     color: slategrey;
     font-weight: bold;
 }
- 
+
 #map {
-    height: 700px;
-    width: 500px; 
+    height: 500px;
+    width: 550px; 
     border: 3px solid grey !important; 
     box-shadow: 1px 2px 3px navy;
+    position: absolute;
+}
+
+.popup {
+    height: 125px;
+    width:  250px;
+    background: white;
+    border: 3px solid grey !important; 
+    box-shadow: 1px 2px 3px navy;
+    position: absolute;
+    z-index: 10;
+    visibility: visible;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 15px;
+    top: 187.5px;
+    left: 150px;
 }
 
 .Carrie {
@@ -79,6 +96,9 @@ video#bgvideo {
 
 #theLeft {
     /* background-color: white;  */
+    height: 700px;
+    width: 500px; 
+    position: relative;
 }
 
 
