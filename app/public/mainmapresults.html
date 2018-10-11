@@ -63,7 +63,8 @@
             <div class="navbar-item">
               <a class="brand">
                 <div class="brand-content">
-                  <div class="brand-title">Lighthouse</div>
+                  <div class="brand-title">light<span class="house">House</span></div>
+
                 </div>
               </a>
             </div>
@@ -153,7 +154,6 @@
             <div class="colum is-half" id="theLeft">
               <!-- <div class="map"> -->
               <div id="map"></div>
-              <div class="popup">Sorry, no results found.<br> Please try another location.</div>
               <!-- </div> -->
             </div>
 
@@ -161,16 +161,20 @@
 
             <div class="column is-half" id="theRight">
               <form id="searchLocation">
-                <div class="Carrie">Search for location, food type or interest</div>
-                <input class="input" type="text" id="search" placeholder="Business or Address">
-                <input type="submit" value="Submit">
+                <!-- <div class="Carrie">Search for location, food type or interest</div> -->
+                <input class="input" type="text" id="search" placeholder="Enter address, location or interest">
+                <br>
+                <input type="submit" value="Submit" id="submitButton">
                 <!-- <a class="button" type="submit" value="Submit">Search</a> -->
+                <br>
+                <br>
               </form>
               <div class="card" id="rightCard">
-                <header class="card-header">
-                  <p class="card-header-title">
-                    <div class="neighborhoodName"></div>
-                  </p>
+                <!-- <header class="card-header"> -->
+                <!-- <p class="card-header-title"> -->
+                <br>
+                <div class="neighborhoodName" id="neighborhoodName"></div>
+                </p>
                 </header>
                 <div class="card-content">
                   <div class="content">
@@ -200,65 +204,155 @@
 
       </section>
 
+      <div class="popup">Sorry, no results found.<br> Please try another location</div>
+
       <div class="container" id="app">
-        <div class="modal">
+        <div class="modal modal1">
           <div class="modal-background"></div>
           <div class="modal-content">
-            <div class="card">
+            <div class="card" id="modalCard">
+
               <header class="card-header">
                 <p class="card-header-title">
-                  Card
+                  <a class="button btnUser">User Survey</a>
+                  <a class="button btnBusiness">Business Safety Information</a>
                 </p>
                 </a>
               </header>
               <div class="card-content">
                 <div class="content">
-
-
-                  <div class="selectSurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="selectSurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="selectSurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="selectSurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="selectSurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="selectSurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-                  <div class="selectSurvey">
-                    <select>
-                      <option>Select dropdown</option>
-                      <option>With options</option>
-                    </select>
-                  </div>
-
+                  How will you rate the atmosphere of this establishment?
                   <br>
+                  <div class="select Asurvey">
+                    <select id="a1">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  How will you rate the outside environment of this establishment?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="a2">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  How comfortable did you feel visiting this establishment?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="a3">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  How safe did you feel at this establishment?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="a4">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  What is the crowd size of this place?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="a5">
+                      <option>Select dropdown</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  Is there Security on the premises?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="security">
+                      <option>Select dropdown</option>
+                      <option value="true">Yes</option>
+                      <option value="false">No</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  What is the time of day?
+                  <br>
+                  <div class="select Asurvey">
+                    <select id="timeday">
+                      <option>Select dropdown</option>
+                      <option>Morning</option>
+                      <option>Afternoon</option>
+                      <option>Night</option>
+                    </select>
+                  </div>
+                  <br>
+                  <br>
+
+                  Any other comments?
+                  <br>
+                  <textarea id="textBox" class="textarea" placeholder="e.g. Hello world"></textarea>
+                  <br>
+                  <br>
+
+                  <a class="button is-light survButton">Submit</a>
 
                 </div>
               </div>
@@ -270,23 +364,94 @@
           <button class="modal-close"></button>
         </div>
 
-        <br /><br /><br />
-        <p>
-          <button class="button" id="showModal">Show</button>
-        </p>
       </div>
 
-      <script>
-        $("#showModal").click(function () {
-          $(".modal").addClass("is-active");
-        });
 
-        $(".modal-close").click(function () {
-          $(".modal").removeClass("is-active");
-        });
-      </script>
+      <div class="container" id="app">
+        <div class="modal modal2">
 
-      <!-------------CONTAINER END ------ ------------->
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+
+                  <a class="button btnUser">User Survey</a>
+                  <a class="button btnBusiness">Business Safety Information</a>
+
+                </p>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
+
+                  <br>
+                  <div class="businessrating">Business Safety Rating</div>
+                  <br>
+                  <div class="userrating">User Safety Rating</div>
+                  <br>
+
+                  <div class="atmosphere">Atmosphere</div>
+                  <br>
+                  <div class="outside">Outside environment</div>
+                  <br>
+                  <div class="comfort">Comfortability</div>
+                  <br>
+                  <div class="safety">Safety</div>
+                  <br>
+                  <div class="crowd">Crowd size</div>
+                  <br>
+                  <div class="security">Security</div>
+                  <br>
+                  <div class="time">Prefered time of day</div>
+
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+          <button class="modal-close"></button>
+        </div>
+
+        <script>
+          $("#showModal").click(function () {
+
+            if ($(".modal1").hasClass("is-active")) {
+              $(".modal1").removeClass("is-active");
+
+              $(".modal2").addClass("is-active");
+            }
+          });
+
+          $(".btnUser").click(function () {
+            if ($(".modal2").hasClass("is-active")) {
+              $(".modal2").removeClass("is-active");
+
+              $(".modal1").addClass("is-active");
+            }
+          });
+          $(".btnBusiness").click(function () {
+            if ($(".modal1").hasClass("is-active")) {
+              $(".modal1").removeClass("is-active");
+
+              $(".modal2").addClass("is-active");
+            }
+          });
+
+
+          $(".modal-close").click(function () {
+            $(".modal1").removeClass("is-active");
+          });
+
+          $(".modal-close").click(function () {
+            $(".modal2").removeClass("is-active");
+
+          });
+        </script>
+
+        <!-------------CONTAINER END ------ ------------->
 
     </main>
 

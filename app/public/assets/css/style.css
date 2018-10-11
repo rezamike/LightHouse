@@ -9,9 +9,14 @@
 
 .is-hero{
     background: url("../images/sunray.png");
-    background-position: center center; 
+    position: fixed; right: 0; bottom: 0; 
+    min-height: 100%;
+    min-width: 100%; 
+    width: auto;
+    height: auto; 
+    z-index: -100; 
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-size: cover; 
 }
 
@@ -27,8 +32,13 @@ video#bgvideo {
 }
 
 .brand-title {
-    color: slategrey ; 
-    font-weight: bold; 
+    color: slategrey; 
+    font-weight: bolder;
+    font-size: 30px;  
+}
+
+.house {
+    color: lightgrey;
 }
 
 .navbar-link {
@@ -41,7 +51,6 @@ video#bgvideo {
     width: 550px; 
     border: 3px solid grey !important; 
     box-shadow: 1px 2px 3px navy;
-    position: absolute;
 }
 
 .popup {
@@ -50,18 +59,26 @@ video#bgvideo {
     background: white;
     border: 3px solid grey !important; 
     box-shadow: 1px 2px 3px navy;
-    position: absolute;
     z-index: 10;
     visibility: visible;
     text-align: center;
     padding-top: 40px;
     font-size: 15px;
-    top: 187.5px;
-    left: 150px;
 }
 
 .Carrie {
     color: navy;
+}
+
+#neighborhoodName {
+    text-align: center;
+    display: inline-block !important; 
+    font-weight: bold;
+}
+
+.card-header {
+    text-align: center;
+    display: inline-block !important; 
 }
 
 #options {
@@ -98,9 +115,13 @@ video#bgvideo {
     /* background-color: white;  */
     height: 700px;
     width: 500px; 
-    position: relative;
+    padding-top: 8% !important;
+    margin-left: 5% !important;
 }
 
+#submitButton {
+    font-size: 18px; 
+}
 
 #search {
     border-color: grey !important; 
@@ -111,10 +132,13 @@ video#bgvideo {
 #rightCard {
     border: 3px solid grey !important; 
     box-shadow: 1px 2px 3px navy;
+    text-align: center;
+    color: navy; 
+    opacity: 0.7;
 }
 
 #left-card {
-     background-color: black; 
+    background-color: black; 
 }
 
 #right-card {
@@ -131,6 +155,14 @@ video#bgvideo {
 }
 
 #theRight {
-    margin-left: 25px;
+    margin-left: 25px !important;
+    padding-top: 11% !important;
+    padding-right: 20% !important;
 }
 
+#modalCard {
+    border: 3px solid grey !important; 
+    box-shadow: 1px 2px 3px navy !important;
+    color: navy; 
+    background: white;
+}

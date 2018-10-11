@@ -25,15 +25,15 @@ $(document).ready(function () {
         method: "GET"
     }).then(function (data) {
         $(".neighborhoodName").text(neighborhoodInput + " Rating")
-        $(".rating").text("rating: " + data[0].rating)
-        $(".totalCrimes").text("total crime: " + data[0].totalCrimes)
-        $(".kidnap").text("kidnap: " + data[0].kidnap)
-        $(".violent").text("violence: " + data[0].violent)
-        $(".property").text("property: " + data[0].property)
-        $(".trespass").text("trespass: " + data[0].trespass)
-        $(".lighting").text("lighting: " + data[0].lighting)
-        $(".clean").text("cleanliness: " + data[0].clean)
-        $(".population").text("population: " + data[0].population)
+        $(".rating").text("Rating: " + data[0].rating)
+        $(".totalCrimes").text("Total Crime: " + data[0].totalCrimes)
+        $(".kidnap").text("Kidnapping: " + data[0].kidnap)
+        $(".violent").text("Violence: " + data[0].violent)
+        $(".property").text("Property: " + data[0].property)
+        $(".trespass").text("Trespass: " + data[0].trespass)
+        $(".lighting").text("Lighting: " + data[0].lighting)
+        $(".clean").text("Cleanliness: " + data[0].clean)
+        $(".population").text("Population: " + data[0].population)
     });
 
     // Receive neighborhood API links from LA Times
@@ -86,10 +86,11 @@ $(document).ready(function () {
             var results = res.results;
 
             if (results.length === 0) {
-                
+                $(".popup").css("visibility", "visible");
                 break;
             }
             else {
+                $(".popup").css("visibility", "hidden");
                 for (let i = 0; i < results.length; i++) {
                     var result = results[i];
                     var name = result.name;
@@ -225,9 +226,32 @@ $(document).ready(function () {
     };
 
     $(".survButton").click(function () {
-        var balls = $(".answer6").val()
+        var businessName = sessionStorage.getItem("businessName");
+        var uniqueID = sessionStorage.getItem("uniqueID");
+        var a1 = $("#a1").val();
+        var a2 = $("#a2").val();
+        var a3 = $("#a3").val();
+        var a4 = $("#a4").val();
+        var a5 = $("#a5").val();
+        var security = $("#security").val();
+        var textBox = $("#textBox").val();
+        var timeDay = $("#timeday").val();
 
-        console.log(balls)
+        var data = {businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay};
+        console.log(data)
+
+        $.ajax({
+            url: "/api/surveys",
+            method: "POST",
+            data: data
+        });
+
+        $.ajax({
+            url: "/api/surveys",
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+        });
     });
 
     // Haversine formula to calculate distance in meters from 2 coordinates

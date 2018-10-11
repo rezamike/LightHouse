@@ -54,8 +54,7 @@ module.exports = function (sequelize, DataTypes) {
         textBox: {
             type: DataTypes.TEXT,
             validate: {
-                len: [0,160],
-                notNull: false
+                len: [0,160]
             }  
         },
         timeDay: {
