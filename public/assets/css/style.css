@@ -71,6 +71,11 @@ video#bgvideo {
 #options {
     border-color: slategrey !important; 
     border-width: 3px !important; 
+    font-size: 13px; 
+}
+
+#chose {
+    font-size: 16px;
 }
 
 .full {
@@ -79,16 +84,16 @@ video#bgvideo {
     right: 16px; */
     padding-top: 10px;
     margin-top: 450px; 
-    text-align: right; 
+    text-align: center; 
     color: white; 
-    text-shadow: slategrey; 
+    /* text-shadow: slategrey;  */
     font-weight: bolder; 
     border-width: 4px !important;  
-    background-color: slategrey; 
-    opacity: 0.7; 
+    /* background-color: slategrey;  */
+    /* opacity: 0.7;  */
     border-radius: 12px;
     width: 500px; 
-    height: 50px; 
+    height: 50px;
 
 }
 
@@ -112,6 +117,7 @@ video#bgvideo {
     border-color: grey !important; 
     border-width: 1.5px !important; 
     box-shadow: .5px 1px 2px navy; 
+    margin-top: 8px; 
 }
 
 #search {
@@ -162,6 +168,39 @@ video#bgvideo {
     background: white;
 }
 
+#modalCard2 { 
+    border: 3px solid grey !important; 
+    box-shadow: 3px 4px 5px navy !important;
+    color: navy; 
+    background: white;
+    font-weight: bolder;
+}
+
+#userSurvey {
+    color: navy;
+}
+
+#busSafety {
+    color: navy; 
+}
+
+.businessName {
+    color: navy;
+    font-weight: bolder; 
+}
+
+.card-header {
+    color: navy; 
+}
+
+#question1 {
+    font-weight:bolder;
+}
+
+#a1 {
+    color: slategrey;
+}
+
 .popup {
     height: 125px;
     width:  250px;
@@ -174,6 +213,12 @@ video#bgvideo {
     text-align: center;
     padding-top: 40px;
     font-size: 15px;
+<<<<<<< HEAD:app/public/assets/css/style.css
+    top: 350px;
+    left: 150px;
+}
+
+=======
     top: 310px;
     left: 365px;
 }
@@ -184,3 +229,4 @@ video#bgvideo {
     background-color: #89cff0;
     border-radius: 10px;
 }
+>>>>>>> 7716e3e9233521a4165ca953c8f6093aaebf2669:public/assets/css/style.css
