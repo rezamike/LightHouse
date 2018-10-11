@@ -154,3 +154,19 @@ video#bgvideo {
     color: navy; 
     background: white;
 }
+
+.popup {
+    height: 125px;
+    width:  250px;
+    background: white;
+    border: 3px solid grey !important; 
+    box-shadow: 1px 2px 3px navy;
+    position: absolute;
+    z-index: 10;
+    visibility: visible;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 15px;
+    top: 350px;
+    left: 150px;
+}
