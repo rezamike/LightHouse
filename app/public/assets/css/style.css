@@ -53,19 +53,6 @@ video#bgvideo {
     box-shadow: 1px 2px 3px navy;
 }
 
-.popup {
-    height: 125px;
-    width:  250px;
-    background: white;
-    border: 3px solid grey !important; 
-    box-shadow: 1px 2px 3px navy;
-    z-index: 10;
-    visibility: hidden;
-    text-align: center;
-    padding-top: 40px;
-    font-size: 15px;
-}
-
 .Carrie {
     color: navy;
 }
@@ -113,7 +100,7 @@ video#bgvideo {
 
 #theLeft {
     /* background-color: white;  */
-    height: 700px;
+    height: 550px;
     width: 500px; 
     padding-top: 8% !important;
     margin-left: 5% !important;
@@ -121,6 +108,10 @@ video#bgvideo {
 
 #submitButton {
     font-size: 18px; 
+    float: right; 
+    border-color: grey !important; 
+    border-width: 1.5px !important; 
+    box-shadow: .5px 1px 2px navy; 
 }
 
 #search {
@@ -141,11 +132,15 @@ video#bgvideo {
     background-color: black; 
 }
 
-#right-card {
-    background-color: black; 
+#about {
+    color: slategrey;
 }
 
-#about {
+#safetyRating {
+    color: slategrey;
+}
+
+#disclaimer {
     color: slategrey;
 }
 
@@ -162,7 +157,23 @@ video#bgvideo {
 
 #modalCard {
     border: 3px solid grey !important; 
-    box-shadow: 1px 2px 3px navy !important;
+    box-shadow: 3px 4px 5px navy !important;
     color: navy; 
     background: white;
+}
+
+.popup {
+    height: 125px;
+    width:  250px;
+    background: white;
+    border: 3px solid grey !important; 
+    box-shadow: 1px 2px 3px navy;
+    position: absolute;
+    z-index: 10;
+    visibility: visible;
+    text-align: center;
+    padding-top: 40px;
+    font-size: 15px;
+    top: 350px;
+    left: 150px;
 }
