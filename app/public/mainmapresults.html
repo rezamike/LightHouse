@@ -63,7 +63,8 @@
             <div class="navbar-item">
               <a class="brand">
                 <div class="brand-content">
-                  <div class="brand-title">Lighthouse</div>
+                  <div class="brand-title">light<span class="house">House</span></div>
+
                 </div>
               </a>
             </div>
@@ -162,14 +163,18 @@
               <form id="searchLocation">
                 <!-- <div class="Carrie">Search for location, food type or interest</div> -->
                 <input class="input" type="text" id="search" placeholder="Enter address, location or interest">
-                <input type="submit" value="Submit">
+                <br>
+                <input type="submit" value="Submit" id="submitButton">
                 <!-- <a class="button" type="submit" value="Submit">Search</a> -->
+                <br>
+                <br>
               </form>
               <div class="card" id="rightCard">
-                <header class="card-header">
-                  <p class="card-header-title">
-                    <div class="neighborhoodName"></div>
-                  </p>
+                <!-- <header class="card-header"> -->
+                <!-- <p class="card-header-title"> -->
+                <br>
+                <div class="neighborhoodName" id="neighborhoodName"></div>
+                </p>
                 </header>
                 <div class="card-content">
                   <div class="content">
@@ -200,20 +205,20 @@
       </section>
 
       <div class="container" id="app">
-        <div class="modal">
+        <div class="modal modal1">
           <div class="modal-background"></div>
           <div class="modal-content">
-            <div class="card">
+            <div class="card" id="modalCard">
+
               <header class="card-header">
                 <p class="card-header-title">
-                  Card
+                  <a class="button btnUser">User Survey</a>
+                  <a class="button btnBusiness">Business Safety Information</a>
                 </p>
                 </a>
               </header>
               <div class="card-content">
                 <div class="content">
-
-
                   How will you rate the atmosphere of this establishment?
                   <br>
                   <div class="select Asurvey">
@@ -359,24 +364,29 @@
 
       </div>
 
-      <!-- SECOND MODAL -->
 
       <div class="container" id="app">
-        <div class="modal">
+        <div class="modal modal2">
+
           <div class="modal-background"></div>
           <div class="modal-content">
             <div class="card">
               <header class="card-header">
                 <p class="card-header-title">
-                  Business name here
+
+                  <a class="button btnUser">User Survey</a>
+                  <a class="button btnBusiness">Business Safety Information</a>
+
                 </p>
                 </a>
               </header>
               <div class="card-content">
                 <div class="content">
-                  <button type="button">Business Ratings</button>
-                  <button type="button">User Ratings</button>
 
+                  <br>
+                  <div class="businessrating">Business Safety Rating</div>
+                  <br>
+                  <div class="userrating">User Safety Rating</div>
                   <br>
 
                   <div class="atmosphere">Atmosphere</div>
@@ -405,11 +415,37 @@
 
         <script>
           $("#showModal").click(function () {
-            $(".modal").addClass("is-active");
+
+            if ($(".modal1").hasClass("is-active")) {
+              $(".modal1").removeClass("is-active");
+
+              $(".modal2").addClass("is-active");
+            }
+          });
+
+          $(".btnUser").click(function () {
+            if ($(".modal2").hasClass("is-active")) {
+              $(".modal2").removeClass("is-active");
+
+              $(".modal1").addClass("is-active");
+            }
+          });
+          $(".btnBusiness").click(function () {
+            if ($(".modal1").hasClass("is-active")) {
+              $(".modal1").removeClass("is-active");
+
+              $(".modal2").addClass("is-active");
+            }
+          });
+
+
+          $(".modal-close").click(function () {
+            $(".modal1").removeClass("is-active");
           });
 
           $(".modal-close").click(function () {
-            $(".modal").removeClass("is-active");
+            $(".modal2").removeClass("is-active");
+
           });
         </script>
 
