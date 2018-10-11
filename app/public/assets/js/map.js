@@ -106,6 +106,8 @@ $(document).ready(function () {
         return false;
     });
 
+
+
     // Initialize map
     function initMap(location) {
 
@@ -208,13 +210,37 @@ $(document).ready(function () {
                 sessionStorage.setItem("businessName", businessName);
                 sessionStorage.setItem("uniqueID", uniqueID);
 
+                $.ajax({
+                    url: "/api/crimes/neighborhoods/" + sessionStorage.getItem("neighborhoodInput"),
+                    method: "GET"
+                }).then(function (res) {
+                    console.log(res[0].rating)
+                    $(".businessrating").html(res[0].rating)
+                })
+
                 $(".modal2").addClass("is-active");
                 if ($(".modal2").hasClass("is-active")) {
                     $.ajax({
                         url: "/api/surveys",
                         method: "GET"
                     }).then(function (response) {
-                        
+
+                        var arrayKevin = [];
+
+                        for (let k = 0; k < response.length; k++) {
+                            arrayKevin.push(response[k].a1)
+                            arrayKevin.push(response[k].a2)
+                            arrayKevin.push(response[k].a3)
+                            arrayKevin.push(response[k].a4)
+                            arrayKevin.push(response[k].a5)
+                        };
+
+
+
+                        $(".userrating").html(sumOfAll(arrayKevin));
+
+
+
                         for (let i = 0; i < response.length; i++) {
                             if (response[i].uniqueID === uniqueID) {
                                 $(".businessName").html(response[i].businessName);
@@ -306,6 +332,22 @@ $(document).ready(function () {
             data: data
         });
     });
+
+
+
+    // add everything in array and returns the average
+    function sumOfAll(array) {
+        var sum = 0;
+
+        for (var i = 0; i < array.length; i++) {
+            sum += array[i];
+        };
+        // console.log(sum);
+        // returns the average of the array
+        var average = sum / array.length;
+        return average
+        // console.log(average);
+    };
 
 
     // Haversine formula to calculate distance in meters from 2 coordinates
