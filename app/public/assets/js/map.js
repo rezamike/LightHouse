@@ -230,8 +230,9 @@ $(document).ready(function () {
         var timeDay = $("#timeday").val();
 
         var data = {businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay};
-
         console.log(data)
+
+        
     });
 
     // Haversine formula to calculate distance in meters from 2 coordinates
