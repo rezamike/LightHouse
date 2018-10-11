@@ -214,8 +214,8 @@
                 <div class="content">
 
 
-                    How will you rate the atmosphere of this establishment?
-                    <br>
+                  How will you rate the atmosphere of this establishment?
+                  <br>
                   <div class="select Asurvey">
                     <select id="a1">
                       <option>Select dropdown</option>
@@ -313,7 +313,7 @@
                   </div>
                   <br>
                   <br>
-                  
+
                   Is there Security on the premises?
                   <br>
                   <div class="select Asurvey">
@@ -325,7 +325,7 @@
                   </div>
                   <br>
                   <br>
-                  
+
                   What is the time of day?
                   <br>
                   <div class="select Asurvey">
@@ -357,22 +357,63 @@
           <button class="modal-close"></button>
         </div>
 
-        <br /><br /><br />
-        <p>
-        </p>
       </div>
 
-      <script>
-        $("#showModal").click(function () {
-          $(".modal").addClass("is-active");
-        });
+      <!-- SECOND MODAL -->
 
-        $(".modal-close").click(function () {
-          $(".modal").removeClass("is-active");
-        });
-      </script>
+      <div class="container" id="app">
+        <div class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Business name here
+                </p>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <button type="button">Business Ratings</button>
+                  <button type="button">User Ratings</button>
 
-      <!-------------CONTAINER END ------ ------------->
+                  <br>
+
+                  <div class="atmosphere">Atmosphere</div>
+                  <br>
+                  <div class="outside">Outside environment</div>
+                  <br>
+                  <div class="comfort">Comfortability</div>
+                  <br>
+                  <div class="safety">Safety</div>
+                  <br>
+                  <div class="crowd">Crowd size</div>
+                  <br>
+                  <div class="security">Security</div>
+                  <br>
+                  <div class="time">Prefered time of day</div>
+
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+          <button class="modal-close"></button>
+        </div>
+
+        <script>
+          $("#showModal").click(function () {
+            $(".modal").addClass("is-active");
+          });
+
+          $(".modal-close").click(function () {
+            $(".modal").removeClass("is-active");
+          });
+        </script>
+
+        <!-------------CONTAINER END ------ ------------->
 
     </main>
 
