@@ -63,7 +63,7 @@
             <div class="navbar-item">
               <a class="brand">
                 <div class="brand-content">
-                    <div class="brand-title">light<span class="house">House</span></div>
+                  <div class="brand-title">light<span class="house">House</span></div>
 
                 </div>
               </a>
@@ -171,10 +171,10 @@
               </form>
               <div class="card" id="rightCard">
                 <!-- <header class="card-header"> -->
-                  <!-- <p class="card-header-title"> -->
-                    <br>
-                    <div class="neighborhoodName" id="neighborhoodName"></div>
-                  </p>
+                <!-- <p class="card-header-title"> -->
+                <br>
+                <div class="neighborhoodName" id="neighborhoodName"></div>
+                </p>
                 </header>
                 <div class="card-content">
                   <div class="content">
@@ -205,14 +205,15 @@
       </section>
 
       <div class="container" id="app">
-        <div class="modal">
+        <div class="modal modal1">
           <div class="modal-background"></div>
           <div class="modal-content">
             <div class="card" id="modalCard">
 
               <header class="card-header">
                 <p class="card-header-title">
-                  Survey
+                  <a class="button btnUser">User Survey</a>
+                  <a class="button btnBusiness">Business Safety Information</a>
                 </p>
                 </a>
               </header>
@@ -220,8 +221,8 @@
                 <div class="content">
 
                   <br>
-                    How will you rate the atmosphere of this establishment?
-                    <br>
+                  How will you rate the atmosphere of this establishment?
+                  <br>
                   <div class="select Asurvey">
                     <select id="a1">
                       <option>Select dropdown</option>
@@ -319,7 +320,7 @@
                   </div>
                   <br>
                   <br>
-                  
+
                   Is there Security on the premises?
                   <br>
                   <div class="select Asurvey">
@@ -331,7 +332,7 @@
                   </div>
                   <br>
                   <br>
-                  
+
                   What is the time of day?
                   <br>
                   <div class="select Asurvey">
@@ -365,17 +366,86 @@
 
       </div>
 
-      <script>
-        $("#showModal").click(function () {
-          $(".modal").addClass("is-active");
-        });
+      <div class="container" id="app">
+        <div class="modal modal2">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  <a class="button btnUser">User Survey</a>
+                  <a class="button btnBusiness">Business Safety Information</a>
+                </p>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
 
-        $(".modal-close").click(function () {
-          $(".modal").removeClass("is-active");
-        });
-      </script>
+                  <br>
+                  <div class="businessrating">Business Safety Rating</div>
+                  <br>
+                  <div class="userrating">User Safety Rating</div>
+                  <br>
+                  <div class="atmosphere">Atmosphere</div>
+                  <br>
+                  <div class="outside">Outside environment</div>
+                  <br>
+                  <div class="comfort">Comfortability</div>
+                  <br>
+                  <div class="safety">Safety</div>
+                  <br>
+                  <div class="crowd">Crowd size</div>
+                  <br>
+                  <div class="security">Security</div>
+                  <br>
+                  <div class="time">Prefered time of day</div>
 
-      <!-------------CONTAINER END ------ ------------->
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+          <button class="modal-close"></button>
+        </div>
+
+        <script>
+          $("#showModal").click(function () {
+
+            if ($(".modal1").hasClass("is-active")) {
+              $(".modal1").removeClass("is-active");
+
+              $(".modal2").addClass("is-active");
+            }
+          });
+
+          $(".btnUser").click(function () {
+            if ($(".modal2").hasClass("is-active")) {
+              $(".modal2").removeClass("is-active");
+
+              $(".modal1").addClass("is-active");
+            }
+          });
+          $(".btnBusiness").click(function () {
+            if ($(".modal1").hasClass("is-active")) {
+              $(".modal1").removeClass("is-active");
+
+              $(".modal2").addClass("is-active");
+            }
+          });
+
+
+          $(".modal-close").click(function () {
+            $(".modal1").removeClass("is-active");
+          });
+
+          $(".modal-close").click(function () {
+            $(".modal2").removeClass("is-active");
+          });
+        </script>
+
+        <!-------------CONTAINER END ------ ------------->
 
     </main>
 
