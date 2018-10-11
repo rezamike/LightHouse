@@ -83,16 +83,25 @@ $(document).ready(function () {
         }).then(function (res) {
 
             var results = res.results;
-            for (let i = 0; i < results.length; i++) {
-                var result = results[i];
-                var name = result.name;
-                var place_id = result.place_id;
-                var coordinates = result.geometry.location;
-                placeResults.push(new Place(name, place_id, coordinates));
-            };
-            console.log(placeResults);
-            initMarkers(placeResults);
+
+            if (results.length === 0) {
+                $(".popup").css("visibility", "visible");
+                break;
+            }
+            else {
+                $(".popup").css("visibility", "hidden");
+                for (let i = 0; i < results.length; i++) {
+                    var result = results[i];
+                    var name = result.name;
+                    var place_id = result.place_id;
+                    var coordinates = result.geometry.location;
+                    placeResults.push(new Place(name, place_id, coordinates));
+                };
+                console.log(placeResults);
+                initMarkers(placeResults);
+            }
         })
+
         });
         return false;
     });
