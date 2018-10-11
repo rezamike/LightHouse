@@ -232,7 +232,18 @@ $(document).ready(function () {
         var data = {businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay};
         console.log(data)
 
-        
+        $.ajax({
+            url: "/api/surveys",
+            method: "POST",
+            data: data
+        });
+
+        $.ajax({
+            url: "/api/surveys",
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+        });
     });
 
     // Haversine formula to calculate distance in meters from 2 coordinates
