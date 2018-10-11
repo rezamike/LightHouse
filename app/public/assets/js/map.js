@@ -318,6 +318,12 @@ $(document).ready(function () {
         map.fitBounds(bounds);
     };
 
+    $(".modal-close").click(function () {
+        $(".modal1").removeClass("is-active");
+        $(".modal2").removeClass("is-active");
+        $(".modal3").removeClass("is-active");
+    })
+
     $(".survButton").click(function () {
         var businessName = sessionStorage.getItem("businessName");
         var uniqueID = sessionStorage.getItem("uniqueID");
@@ -338,6 +344,10 @@ $(document).ready(function () {
             method: "POST",
             data: data
         });
+
+        $(".modal1").removeClass("is-active");
+        $(".modal2").removeClass("is-active");
+        $(".modal3").addClass("is-active");
     });
 
     // Add everything in array and returns the average
