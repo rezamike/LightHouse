@@ -177,3 +177,10 @@ video#bgvideo {
     top: 310px;
     left: 365px;
 }
+
+.thankYou {
+    font-size: 24px;
+    padding: 100px;
+    background-color: #89cff0;
+    border-radius: 10px;
+}
