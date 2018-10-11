@@ -65,12 +65,10 @@ $(document).ready(function () {
             location = res.simple_shape.coordinates[0][0];
             console.log(location);
             initMap(location);
-<<<<<<< HEAD:app/public/assets/js/map.js
         })
-=======
-        });
+
     });
->>>>>>> 7716e3e9233521a4165ca953c8f6093aaebf2669:public/assets/js/map.js
+
 
     // Search for a location with Google Places API and initialize markers
     $("#searchLocation").on("submit", function (event) {
