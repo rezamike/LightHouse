@@ -299,10 +299,10 @@ $(document).ready(function () {
                                     $(".crowd").html("Very Crowded");
                                 }
 
-                                if (response.security === 0) {
+                                if (response.security === false) {
                                     $(".security").html("None")
                                 }
-                                else if (response.security === 1) {
+                                else if (response.security === true) {
                                     $(".security").html("Security On-Site")
                                 }
                             }
