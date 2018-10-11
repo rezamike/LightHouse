@@ -138,7 +138,7 @@ $(document).ready(function () {
             var longitude = coordinates[0];
             boundary.push(new google.maps.LatLng(latitude, longitude));
 
-            
+
             //var marker = new google.maps.Marker({ position: placeResults[i].coordinates, map: map, id: placeResults[i].place_id });
 
         }
@@ -229,20 +229,13 @@ $(document).ready(function () {
         var textBox = $("#textBox").val();
         var timeDay = $("#timeday").val();
 
-        var data = {businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay};
+        var data = { businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay };
         console.log(data)
 
         $.ajax({
             url: "/api/surveys",
             method: "POST",
             data: data
-        });
-
-        $.ajax({
-            url: "/api/surveys",
-            method: "GET"
-        }).then(function(response) {
-            console.log(response);
         });
     });
 
