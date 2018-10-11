@@ -93,10 +93,7 @@ $(document).ready(function () {
             };
             console.log(placeResults);
             initMarkers(placeResults);
-        }).then((res) => {
-            $.get("/api/surveys/", (res) => {
-
-            });
+        })
         });
         return false;
     });
