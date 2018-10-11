@@ -155,6 +155,27 @@ video#bgvideo {
     background: white;
 }
 
+#modalCard2 { 
+    border: 3px solid grey !important; 
+    box-shadow: 3px 4px 5px navy !important;
+    color: navy; 
+    background: white;
+    font-weight: bolder;
+}
+
+.button btnBusiness {
+    color: navy;
+}
+
+.button btnUser {
+    color: navy; 
+}
+
+.businessName {
+    color: navy;
+    font-weight: bolder; 
+}
+
 .popup {
     height: 125px;
     width:  250px;
@@ -170,3 +191,4 @@ video#bgvideo {
     top: 350px;
     left: 150px;
 }
+
