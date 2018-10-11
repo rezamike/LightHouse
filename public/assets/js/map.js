@@ -243,7 +243,9 @@ $(document).ready(function () {
 
 
                         for (let i = 0; i < response.length; i++) {
-                            if (response[i].uniqueID === uniqueID) {
+
+                            var y = sessionStorage.getItem("uniqueID")
+                            if (response[i].uniqueID === y) {
                                 $(".businessName").html(response[i].businessName);
                                 $(".time").html(response[i].timeDay);
 
