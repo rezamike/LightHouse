@@ -1,5 +1,3 @@
-USE projectTwo;
-
 INSERT INTO Surveys (businessName, uniqueID, a1, a2, a3, a4, a5, security, textBox, timeDay) VALUES ("Starbucks", "ChIJ7a7Tr0aXwoARaJEolrvziaw", 5, 8, 10, 5, 4, 1, "This is a great Sbucks!", "Afternoon");
 
 INSERT INTO Crimes (neighborhood, rating, totalCrimes, kidnap, violent, property, trespass, lighting, clean, population) VALUES ("Van Nuys", 7, 1467, 1, 202, 843, 0, "Poor Lighting", "Dirty", 171075);
