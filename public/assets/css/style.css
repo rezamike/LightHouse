@@ -213,20 +213,20 @@ video#bgvideo {
     text-align: center;
     padding-top: 40px;
     font-size: 15px;
-<<<<<<< HEAD:app/public/assets/css/style.css
     top: 350px;
     left: 150px;
-}
-
-=======
-    top: 310px;
-    left: 365px;
-}
+    /* top: 310px;
+    left: 365px; */
+    color: navy; 
+} 
 
 .thankYou {
     font-size: 24px;
-    padding: 100px;
-    background-color: #89cff0;
+    padding: 40px;
+    text-align: center;
     border-radius: 10px;
+    background: white;
+    border: 3px solid grey !important; 
+    box-shadow: 1px 2px 3px navy;
+    color: navy; 
 }
->>>>>>> 7716e3e9233521a4165ca953c8f6093aaebf2669:public/assets/css/style.css
