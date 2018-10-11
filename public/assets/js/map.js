@@ -25,7 +25,7 @@ $(document).ready(function () {
         method: "GET"
     }).then(function (data) {
         $(".neighborhoodName").text(neighborhoodInput + " Rating")
-        $(".rating").text("Neighborhood Safety Rating:" + data[0].rating)
+        $(".rating").text("Neighborhood Safety Rating: " + data[0].rating)
         $(".totalCrimes").text("Total Crime: " + data[0].totalCrimes)
         $(".kidnap").text("Kidnapping: " + data[0].kidnap)
         $(".violent").text("Violence: " + data[0].violent)
@@ -65,12 +65,18 @@ $(document).ready(function () {
             location = res.simple_shape.coordinates[0][0];
             console.log(location);
             initMap(location);
+<<<<<<< HEAD:app/public/assets/js/map.js
         })
+=======
+        });
+    });
+>>>>>>> 7716e3e9233521a4165ca953c8f6093aaebf2669:public/assets/js/map.js
 
     // Search for a location with Google Places API and initialize markers
     $("#searchLocation").on("submit", function (event) {
 
         event.preventDefault();
+        $(".popup").css("visibility", "hidden");
         var placeResults = [];
         var input = $("#search").val();
         console.log(input);
@@ -82,16 +88,25 @@ $(document).ready(function () {
         }).then(function (res) {
 
             var results = res.results;
-            for (let i = 0; i < results.length; i++) {
-                var result = results[i];
-                var name = result.name;
-                var place_id = result.place_id;
-                var coordinates = result.geometry.location;
-                placeResults.push(new Place(name, place_id, coordinates));
-            };
-            console.log(placeResults);
-            initMarkers(placeResults);
-        })
+
+            if (results.length === 0) {
+                $(".popup").css("visibility", "visible");
+            }
+            else {
+                for (let i = 0; i < results.length; i++) {
+                    var result = results[i];
+                    var name = result.name;
+                    var place_id = result.place_id;
+                    var coordinates = result.geometry.location;
+                    placeResults.push(new Place(name, place_id, coordinates));
+                };
+                console.log(placeResults);
+                initMarkers(placeResults);
+            }
+        }).then((res) => {
+            $.get("/api/surveys/", (res) => {
+
+            });
         });
         return false;
     });
@@ -198,16 +213,41 @@ $(document).ready(function () {
                 sessionStorage.setItem("businessName", businessName);
                 sessionStorage.setItem("uniqueID", uniqueID);
 
+                $.ajax({
+                    url: "/api/crimes/neighborhoods/" + sessionStorage.getItem("neighborhoodInput"),
+                    method: "GET"
+                }).then(function (res) {
+                    console.log(res[0].rating)
+                    $(".businessrating").html(res[0].rating)
+                })
+
                 $(".modal2").addClass("is-active");
                 if ($(".modal2").hasClass("is-active")) {
                     $.ajax({
                         url: "/api/surveys",
                         method: "GET"
                     }).then(function (response) {
-                        
+
+                        var arrayKevin = [];
+
+                        for (let k = 0; k < response.length; k++) {
+                            arrayKevin.push(response[k].a1)
+                            arrayKevin.push(response[k].a2)
+                            arrayKevin.push(response[k].a3)
+                            arrayKevin.push(response[k].a4)
+                            arrayKevin.push(response[k].a5)
+                        };
+
+
+
+                        $(".userrating").html(sumOfAll(arrayKevin));
+
+
+
                         for (let i = 0; i < response.length; i++) {
                             if (response[i].uniqueID === uniqueID) {
                                 $(".businessName").html(response[i].businessName);
+                                $(".time").html(response[i].timeDay);
 
                                 if (response.a1 <= 3) {
                                     $(".atmosphere").html("Calming");
@@ -258,6 +298,13 @@ $(document).ready(function () {
                                 else if (response[i].a5 > 7) {
                                     $(".crowd").html("Very Crowded");
                                 }
+
+                                if (response.security === 0) {
+                                    $(".security").html("None")
+                                }
+                                else if (response.security === 1) {
+                                    $(".security").html("Security On-Site")
+                                }
                             }
                         }
                     });
@@ -274,6 +321,12 @@ $(document).ready(function () {
         }
         map.fitBounds(bounds);
     };
+
+    $(".modal-close").click(function () {
+        $(".modal1").removeClass("is-active");
+        $(".modal2").removeClass("is-active");
+        $(".modal3").removeClass("is-active");
+    })
 
     $(".survButton").click(function () {
         var businessName = sessionStorage.getItem("businessName");
@@ -295,7 +348,25 @@ $(document).ready(function () {
             method: "POST",
             data: data
         });
+
+        $(".modal1").removeClass("is-active");
+        $(".modal2").removeClass("is-active");
+        $(".modal3").addClass("is-active");
     });
+
+    // Add everything in array and returns the average
+    function sumOfAll(array) {
+        var sum = 0;
+
+        for (var i = 0; i < array.length; i++) {
+            sum += array[i];
+        };
+        // console.log(sum);
+        // returns the average of the array
+        var average = sum / array.length;
+        return average
+        // console.log(average);
+    };
 
 
     // Haversine formula to calculate distance in meters from 2 coordinates

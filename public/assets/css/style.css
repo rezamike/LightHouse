@@ -45,7 +45,7 @@ video#bgvideo {
     color: slategrey;
     font-weight: bold;
 }
- 
+
 #map {
     height: 500px;
     width: 550px; 
@@ -104,8 +104,11 @@ video#bgvideo {
 }
 
 #theLeft {
-   padding-top: 8% !important;
-   margin-left: 5% !important;
+    /* background-color: white;  */
+    height: 500px;
+    width: 550px; 
+    padding-top: 8% !important;
+    margin-left: 5% !important;
 }
 
 #submitButton {
@@ -129,6 +132,10 @@ video#bgvideo {
     text-align: center;
     color: navy; 
     opacity: 0.7;
+}
+
+#left-card {
+    background-color: black; 
 }
 
 #about {
@@ -202,11 +209,24 @@ video#bgvideo {
     box-shadow: 1px 2px 3px navy;
     position: absolute;
     z-index: 10;
-    visibility: visible;
+    visibility: hidden;
     text-align: center;
     padding-top: 40px;
     font-size: 15px;
+<<<<<<< HEAD:app/public/assets/css/style.css
     top: 350px;
     left: 150px;
 }
 
+=======
+    top: 310px;
+    left: 365px;
+}
+
+.thankYou {
+    font-size: 24px;
+    padding: 100px;
+    background-color: #89cff0;
+    border-radius: 10px;
+}
+>>>>>>> 7716e3e9233521a4165ca953c8f6093aaebf2669:public/assets/css/style.css

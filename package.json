@@ -1,5 +1,5 @@
 {
-  "name": "projectTwo",
+  "name": "projecttwo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,12 @@
     "sequelize": "^4.39.0"
   },
   "devDependencies": {},
+  "engines": {
+    "node": "10.4.1",
+    "npm": "6.4.1"
+  },
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
