@@ -224,7 +224,7 @@
                   <div class="select Asurvey">
                     <select id="a1">
                       <option>Select dropdown</option>
-                      <option>1</option>
+                      <option>1 (Calming)</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
@@ -233,7 +233,7 @@
                       <option>7</option>
                       <option>8</option>
                       <option>9</option>
-                      <option>10</option>
+                      <option>10 (Alarming)</option>
                     </select>
                   </div>
                   <br>
@@ -244,7 +244,7 @@
                   <div class="select Asurvey">
                     <select id="a2">
                       <option>Select dropdown</option>
-                      <option>1</option>
+                      <option>1 (Clean)</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
@@ -253,7 +253,7 @@
                       <option>7</option>
                       <option>8</option>
                       <option>9</option>
-                      <option>10</option>
+                      <option>10 (Dirty)</option>
                     </select>
                   </div>
                   <br>
@@ -264,7 +264,7 @@
                   <div class="select Asurvey">
                     <select id="a3">
                       <option>Select dropdown</option>
-                      <option>1</option>
+                      <option>1 (Relaxed)</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
@@ -273,7 +273,7 @@
                       <option>7</option>
                       <option>8</option>
                       <option>9</option>
-                      <option>10</option>
+                      <option>10 (Uncomfortable)</option>
                     </select>
                   </div>
                   <br>
@@ -284,7 +284,7 @@
                   <div class="select Asurvey">
                     <select id="a4">
                       <option>Select dropdown</option>
-                      <option>1</option>
+                      <option>1 (Safe)</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
@@ -293,7 +293,7 @@
                       <option>7</option>
                       <option>8</option>
                       <option>9</option>
-                      <option>10</option>
+                      <option>10 (Threatened)</option>
                     </select>
                   </div>
                   <br>
@@ -304,7 +304,7 @@
                   <div class="select Asurvey">
                     <select id="a5">
                       <option>Select dropdown</option>
-                      <option>1</option>
+                      <option>1 (Sparse)</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
@@ -313,7 +313,7 @@
                       <option>7</option>
                       <option>8</option>
                       <option>9</option>
-                      <option>10</option>
+                      <option>10 (Very Crowded)</option>
                     </select>
                   </div>
                   <br>
@@ -384,12 +384,16 @@
                 <div class="content">
 
                   <br>
+                  <div class="businessName">Business Name</div>
+                  <br>
+                  <div class="lhrating">lightHouse Safety Rating</div>
+                  <br>
                   <div class="businessrating">Business Safety Rating</div>
                   <br>
                   <div class="userrating">User Safety Rating</div>
                   <br>
+                  Atmosphere: <div class="atmosphere"></div>
 
-                  <div class="atmosphere">Atmosphere</div>
                   <br>
                   <div class="outside">Outside environment</div>
                   <br>
@@ -421,6 +425,7 @@
 
               $(".modal2").addClass("is-active");
             }
+            
           });
 
           $(".btnUser").click(function () {
@@ -436,6 +441,14 @@
 
               $(".modal2").addClass("is-active");
             }
+            if ($(".modal2").hasClass("is-active")) {
+        $.ajax({
+            url: "/api/surveys",
+            method: "GET"
+        }).then(function (response) {
+            console.log("hello");
+        });
+    };
           });
 
 
