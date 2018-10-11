@@ -66,12 +66,13 @@ $(document).ready(function () {
             console.log(location);
             initMap(location);
         });
-
+    });
 
     // Search for a location with Google Places API and initialize markers
     $("#searchLocation").on("submit", function (event) {
 
         event.preventDefault();
+        $(".popup").css("visibility", "hidden");
         var placeResults = [];
         var input = $("#search").val();
         console.log(input);
@@ -86,10 +87,8 @@ $(document).ready(function () {
 
             if (results.length === 0) {
                 $(".popup").css("visibility", "visible");
-                break;
             }
             else {
-                $(".popup").css("visibility", "hidden");
                 for (let i = 0; i < results.length; i++) {
                     var result = results[i];
                     var name = result.name;
@@ -100,13 +99,13 @@ $(document).ready(function () {
                 console.log(placeResults);
                 initMarkers(placeResults);
             }
-        })
+        }).then((res) => {
+            $.get("/api/surveys/", (res) => {
 
+            });
         });
         return false;
     });
-
-
 
     // Initialize map
     function initMap(location) {
@@ -341,9 +340,7 @@ $(document).ready(function () {
         });
     });
 
-
-
-    // add everything in array and returns the average
+    // Add everything in array and returns the average
     function sumOfAll(array) {
         var sum = 0;
 
